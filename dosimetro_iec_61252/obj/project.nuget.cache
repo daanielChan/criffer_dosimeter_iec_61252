@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "N15cssyfc75aoju7I15PiaDCe5sEAy1lDs24JxZqXDXfgrsWPHU/fiPhqLR8zgktCs7TNkhlzx2fIU2s+1G8aA==",
+  "dgSpecHash": "jxEv35VI+g8U8pWIof9SweEbGmdAe6sMNxm/HUuDxf6ohfCUeDADok8WteryxBelt4/fhQdab4GPG9DNXX0+JA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Daniel\\Documents\\Projetos_criffer\\dosimetro_iec_61252\\dosimetro_iec_61252\\dosimetro_iec_61252.csproj",
+  "projectFilePath": "C:\\Users\\Daniel\\Documents\\Projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\dosimetro_iec_61252.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Daniel\\.nuget\\packages\\epplus\\7.1.2\\epplus.7.1.2.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\epplus.interfaces\\6.1.1\\epplus.interfaces.6.1.1.nupkg.sha512",
