@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("dosimetro_iec_61252")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6992ac73b559b0d55189471ddcff7acab2159cda")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a3ef5d77d51cc07831e9ac31b0e0432ffea6bc9")]
 [assembly: System.Reflection.AssemblyProductAttribute("dosimetro_iec_61252")]
 [assembly: System.Reflection.AssemblyTitleAttribute("dosimetro_iec_61252")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

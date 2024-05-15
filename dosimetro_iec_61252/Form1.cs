@@ -2,48 +2,85 @@ namespace dosimetro_iec_61252
 {
     public partial class Form1 : Form
     {
-
-
-
+        init_config init_screen = new init_config();
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void FileSelectBtn_Click(object sender, EventArgs e)
         {
-            // Exemplo de uso:
+            DialogResult result = openFileDialog1.ShowDialog();
 
-            // Inicialização
-            excel_file_manager excelManager = new excel_file_manager();
-            excelManager.init("C:\\Users\\Daniel\\Desktop", "tst.xlsx");
-
-            // Leitura
-            string[,] data = excelManager.read_data("Plan1");
-
-            // Escrita
-            // excelManager.WriteData(new string[,] { { "A", "B", "C" }, { "1", "2", "3" } }, "Plan2");
-
-            // Fechar o arquivo
-
-            // Converter os dados para uma string legível
-            string dataText = "";
-            for (int i = 0; i < data.GetLength(0); i++)
+            if (result == DialogResult.OK)
             {
-                for (int j = 0; j < data.GetLength(1); j++)
-                {
-                    dataText += data[i, j] + "\t"; // Adiciona o valor e uma tabulação
-                }
-                dataText += "\n"; // Adiciona uma quebra de linha no final de cada linha de dados
+                string selectedFileName = openFileDialog1.FileName;
+                FilePathAndName.Text = selectedFileName;
+            }
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (FilePathAndName.Text == "Aguardando..")
+            {
+                MessageBox.Show("Você precisa selecionar um arquivo Excel para carregar os valores.", "Atenção!");
+                return;
             }
 
-            excelManager.write_cell("Plan2", 2, 3, "Novo Valor");
+            init_screen.update_from_excel(Path.GetDirectoryName(openFileDialog1.FileName), openFileDialog1.SafeFileName);
 
-            excelManager.close();
+            ParMed.Text   = init_screen._par_med;
+            RefLvl.Text   = init_screen._ref_level;
+            UpLim.Text    = init_screen._up_lim_db;
+            DownLim.Text  = init_screen._down_lim_db;
+            UpFreq.Text   = init_screen._up_lim_freq;
+            DownFreq.Text = init_screen._down_lim_freq;
+            DataLbl.Text  = init_screen._cert_data;
 
-            // Definir a string formatada como o texto do label1
-            label1.Text = dataText;
+            if (init_screen._umid != null)
+            {
+                umidUpDown.Value = int.Parse(init_screen._umid);
+            }
+
+            if (init_screen._temp != null)
+            {
+                tempUpDown.Value = int.Parse(init_screen._temp);
+            }
+
+            if (init_screen._press != null)
+            {
+                pressUpDown.Value = int.Parse(init_screen._press);
+            }
+
+            if (init_screen._cert_num != null)
+            {
+                NumUpDown.Value = int.Parse(init_screen._cert_num);
+            }
+        }
+
+        private void NumUpDown_ValueChanged(object sender, EventArgs e) { }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (FilePathAndName.Text == "Aguardando..")
+            {
+                MessageBox.Show("Você precisa selecionar um arquivo Excel para salvar os valores.", "Atenção!");
+                return;
+            }
+
+            init_screen._umid  = umidUpDown.Value.ToString();
+            init_screen._temp  = tempUpDown.Value.ToString();
+            init_screen._press = pressUpDown.Value.ToString();
+            init_screen._cert_num = NumUpDown.Value.ToString();
+
+            init_screen.update_to_excel(Path.GetDirectoryName(openFileDialog1.FileName), openFileDialog1.SafeFileName);
+
         }
     }
 }
