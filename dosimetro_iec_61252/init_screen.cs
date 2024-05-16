@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dosimetro_iec_61252
 {
-    internal class init_config
+    public class init_screen
     {
         public String _par_med;
         public String _com_door;
@@ -23,12 +23,11 @@ namespace dosimetro_iec_61252
         public String _cert_num;
 
         public String _cert_data;
+        private excel_file_manager excel_file;
 
-        excel_file_manager excel_file;
+        private const String sheet_name_internal = "Config";
 
-        private String sheet_name_internal = "Config";
-
-        public init_config ()
+        public init_screen ()
         {
             excel_file = new excel_file_manager();
             _par_med = string.Empty;

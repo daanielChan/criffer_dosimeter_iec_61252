@@ -2,7 +2,7 @@ namespace dosimetro_iec_61252
 {
     public partial class Form1 : Form
     {
-        init_config init_screen = new init_config();
+        screens_manager screen_manager = new screens_manager();
 
         public Form1()
         {
@@ -16,71 +16,71 @@ namespace dosimetro_iec_61252
             if (result == DialogResult.OK)
             {
                 string selectedFileName = openFileDialog1.FileName;
-                FilePathAndName.Text = selectedFileName;
+                lblFilePathAndName.Text = selectedFileName;
             }
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            if (FilePathAndName.Text == "Aguardando..")
+            if (lblFilePathAndName.Text == "Aguardando..")
             {
                 MessageBox.Show("Você precisa selecionar um arquivo Excel para carregar os valores.", "Atenção!");
                 return;
             }
 
-            init_screen.update_from_excel(Path.GetDirectoryName(openFileDialog1.FileName), openFileDialog1.SafeFileName);
+            screen_manager._init_screen.update_from_excel(Path.GetDirectoryName(openFileDialog1.FileName), openFileDialog1.SafeFileName);
 
-            ParMed.Text   = init_screen._par_med;
-            RefLvl.Text   = init_screen._ref_level;
-            UpLim.Text    = init_screen._up_lim_db;
-            DownLim.Text  = init_screen._down_lim_db;
-            UpFreq.Text   = init_screen._up_lim_freq;
-            DownFreq.Text = init_screen._down_lim_freq;
-            DataLbl.Text  = init_screen._cert_data;
+            lblParMed.Text = screen_manager._init_screen._par_med;
+            lblRefLvl.Text = screen_manager._init_screen._ref_level;
+            lblUpLim.Text = screen_manager._init_screen._up_lim_db;
+            lblDownLim.Text = screen_manager._init_screen._down_lim_db;
+            lblUpFreq.Text = screen_manager._init_screen._up_lim_freq;
+            lblDownFreq.Text = screen_manager._init_screen._down_lim_freq;
+            lblDataLbl.Text = screen_manager._init_screen._cert_data;
 
-            if (init_screen._umid != null)
+            if (screen_manager._init_screen._umid != null)
             {
-                umidUpDown.Value = int.Parse(init_screen._umid);
+                umidUpDown.Value = int.Parse(screen_manager._init_screen._umid);
             }
 
-            if (init_screen._temp != null)
+            if (screen_manager._init_screen._temp != null)
             {
-                tempUpDown.Value = int.Parse(init_screen._temp);
+                tempUpDown.Value = int.Parse(screen_manager._init_screen._temp);
             }
 
-            if (init_screen._press != null)
+            if (screen_manager._init_screen._press != null)
             {
-                pressUpDown.Value = int.Parse(init_screen._press);
+                pressUpDown.Value = int.Parse(screen_manager._init_screen._press);
             }
 
-            if (init_screen._cert_num != null)
+            if (screen_manager._init_screen._cert_num != null)
             {
-                NumUpDown.Value = int.Parse(init_screen._cert_num);
+                NumUpDown.Value = int.Parse(screen_manager._init_screen._cert_num);
             }
         }
 
-        private void NumUpDown_ValueChanged(object sender, EventArgs e) { }
-
         private void button7_Click(object sender, EventArgs e)
         {
-            if (FilePathAndName.Text == "Aguardando..")
+            if (lblFilePathAndName.Text == "Aguardando..")
             {
                 MessageBox.Show("Você precisa selecionar um arquivo Excel para salvar os valores.", "Atenção!");
                 return;
             }
 
-            init_screen._umid  = umidUpDown.Value.ToString();
-            init_screen._temp  = tempUpDown.Value.ToString();
-            init_screen._press = pressUpDown.Value.ToString();
-            init_screen._cert_num = NumUpDown.Value.ToString();
+            screen_manager._init_screen._umid = umidUpDown.Value.ToString();
+            screen_manager._init_screen._temp = tempUpDown.Value.ToString();
+            screen_manager._init_screen._press = pressUpDown.Value.ToString();
+            screen_manager._init_screen._cert_num = NumUpDown.Value.ToString();
 
-            init_screen.update_to_excel(Path.GetDirectoryName(openFileDialog1.FileName), openFileDialog1.SafeFileName);
+            screen_manager._init_screen.update_to_excel(Path.GetDirectoryName(openFileDialog1.FileName), openFileDialog1.SafeFileName);
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 tela2 = new Form2(screen_manager);
+            tela2.Show();
+            this.Hide(); // Esconde o formulário principal
+            tela2.FormClosed += (s, args) => this.Show(); // Reexibe o formulário principal quando a tela2 for fechada
         }
     }
 }

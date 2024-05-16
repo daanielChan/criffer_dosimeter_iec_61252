@@ -36,8 +36,8 @@
             button2 = new Button();
             button1 = new Button();
             tableLayoutPanel27 = new TableLayoutPanel();
-            button7 = new Button();
-            button6 = new Button();
+            btnSaveToExcel = new Button();
+            btnExcelToProgram = new Button();
             tableLayoutPanel18 = new TableLayoutPanel();
             tableLayoutPanel19 = new TableLayoutPanel();
             btnTestGenerator = new Button();
@@ -56,22 +56,22 @@
             label10 = new Label();
             tableLayoutPanel9 = new TableLayoutPanel();
             DownFreqFix = new Label();
-            DownFreq = new Label();
+            lblDownFreq = new Label();
             tableLayoutPanel7 = new TableLayoutPanel();
             UpFreqFix = new Label();
-            UpFreq = new Label();
+            lblUpFreq = new Label();
             tableLayoutPanel6 = new TableLayoutPanel();
             DownLimFix = new Label();
-            DownLim = new Label();
+            lblDownLim = new Label();
             tableLayoutPanel5 = new TableLayoutPanel();
             UpLimFix = new Label();
-            UpLim = new Label();
+            lblUpLim = new Label();
             tableLayoutPanel3 = new TableLayoutPanel();
             RefLvlFix = new Label();
-            RefLvl = new Label();
+            lblRefLvl = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
             ParMedFixed = new Label();
-            ParMed = new Label();
+            lblParMed = new Label();
             tableLayoutPanel10 = new TableLayoutPanel();
             tableLayoutPanel26 = new TableLayoutPanel();
             button5 = new Button();
@@ -79,14 +79,14 @@
             tableLayoutPanel11 = new TableLayoutPanel();
             CerCalibFix = new Label();
             tableLayoutPanel12 = new TableLayoutPanel();
-            DataLbl = new Label();
+            lblDataLbl = new Label();
             NúmeroLblFix = new Label();
             NumUpDown = new NumericUpDown();
             DataLblFix = new Label();
             tableLayoutPanel13 = new TableLayoutPanel();
             tableLayoutPanel15 = new TableLayoutPanel();
-            FilePathAndName = new Label();
-            FileSelectBtn = new Button();
+            lblFilePathAndName = new Label();
+            btnFileSelect = new Button();
             FileSelectFix = new Label();
             tableLayoutPanel4 = new TableLayoutPanel();
             label1 = new Label();
@@ -267,14 +267,15 @@
             button1.TabIndex = 6;
             button1.Text = "Linearlidade e Sinais Estáticos";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // tableLayoutPanel27
             // 
             tableLayoutPanel27.ColumnCount = 2;
             tableLayoutPanel27.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel27.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel27.Controls.Add(button7, 0, 0);
-            tableLayoutPanel27.Controls.Add(button6, 1, 0);
+            tableLayoutPanel27.Controls.Add(btnSaveToExcel, 0, 0);
+            tableLayoutPanel27.Controls.Add(btnExcelToProgram, 1, 0);
             tableLayoutPanel27.Dock = DockStyle.Fill;
             tableLayoutPanel27.Location = new Point(3, 54);
             tableLayoutPanel27.Name = "tableLayoutPanel27";
@@ -283,33 +284,33 @@
             tableLayoutPanel27.Size = new Size(246, 45);
             tableLayoutPanel27.TabIndex = 15;
             // 
-            // button7
+            // btnSaveToExcel
             // 
-            button7.BackColor = SystemColors.Highlight;
-            button7.BackgroundImageLayout = ImageLayout.Zoom;
-            button7.Dock = DockStyle.Fill;
-            button7.FlatStyle = FlatStyle.Flat;
-            button7.Location = new Point(3, 3);
-            button7.Name = "button7";
-            button7.Size = new Size(117, 39);
-            button7.TabIndex = 7;
-            button7.Text = "Salvar no Excel";
-            button7.UseVisualStyleBackColor = false;
-            button7.Click += button7_Click;
+            btnSaveToExcel.BackColor = SystemColors.Highlight;
+            btnSaveToExcel.BackgroundImageLayout = ImageLayout.Zoom;
+            btnSaveToExcel.Dock = DockStyle.Fill;
+            btnSaveToExcel.FlatStyle = FlatStyle.Flat;
+            btnSaveToExcel.Location = new Point(3, 3);
+            btnSaveToExcel.Name = "btnSaveToExcel";
+            btnSaveToExcel.Size = new Size(117, 39);
+            btnSaveToExcel.TabIndex = 7;
+            btnSaveToExcel.Text = "Salvar no Excel";
+            btnSaveToExcel.UseVisualStyleBackColor = false;
+            btnSaveToExcel.Click += button7_Click;
             // 
-            // button6
+            // btnExcelToProgram
             // 
-            button6.BackColor = SystemColors.Highlight;
-            button6.BackgroundImageLayout = ImageLayout.Zoom;
-            button6.Dock = DockStyle.Fill;
-            button6.FlatStyle = FlatStyle.Flat;
-            button6.Location = new Point(126, 3);
-            button6.Name = "button6";
-            button6.Size = new Size(117, 39);
-            button6.TabIndex = 6;
-            button6.Text = "Carregar do Excel";
-            button6.UseVisualStyleBackColor = false;
-            button6.Click += button6_Click;
+            btnExcelToProgram.BackColor = SystemColors.Highlight;
+            btnExcelToProgram.BackgroundImageLayout = ImageLayout.Zoom;
+            btnExcelToProgram.Dock = DockStyle.Fill;
+            btnExcelToProgram.FlatStyle = FlatStyle.Flat;
+            btnExcelToProgram.Location = new Point(126, 3);
+            btnExcelToProgram.Name = "btnExcelToProgram";
+            btnExcelToProgram.Size = new Size(117, 39);
+            btnExcelToProgram.TabIndex = 6;
+            btnExcelToProgram.Text = "Carregar do Excel";
+            btnExcelToProgram.UseVisualStyleBackColor = false;
+            btnExcelToProgram.Click += button6_Click;
             // 
             // tableLayoutPanel18
             // 
@@ -350,6 +351,7 @@
             btnTestGenerator.BackColor = SystemColors.Highlight;
             btnTestGenerator.BackgroundImageLayout = ImageLayout.Zoom;
             btnTestGenerator.Dock = DockStyle.Fill;
+            btnTestGenerator.Enabled = false;
             btnTestGenerator.FlatStyle = FlatStyle.Flat;
             btnTestGenerator.Location = new Point(167, 4);
             btnTestGenerator.Name = "btnTestGenerator";
@@ -502,7 +504,6 @@
             label9.TabIndex = 0;
             label9.Text = "Umidade (%)";
             label9.TextAlign = ContentAlignment.MiddleCenter;
-            label9.Click += label9_Click;
             // 
             // tempUpDown
             // 
@@ -534,7 +535,7 @@
             tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel9.Controls.Add(DownFreqFix, 0, 0);
-            tableLayoutPanel9.Controls.Add(DownFreq, 0, 1);
+            tableLayoutPanel9.Controls.Add(lblDownFreq, 0, 1);
             tableLayoutPanel9.Dock = DockStyle.Fill;
             tableLayoutPanel9.Location = new Point(519, 435);
             tableLayoutPanel9.Name = "tableLayoutPanel9";
@@ -556,18 +557,18 @@
             DownFreqFix.TabIndex = 0;
             DownFreqFix.Text = "Frequência Inferior (Hz)";
             // 
-            // DownFreq
+            // lblDownFreq
             // 
-            DownFreq.Anchor = AnchorStyles.None;
-            DownFreq.AutoSize = true;
-            DownFreq.BackColor = SystemColors.ControlLightLight;
-            DownFreq.BorderStyle = BorderStyle.Fixed3D;
-            DownFreq.Font = new Font("Arial", 15F);
-            DownFreq.Location = new Point(66, 63);
-            DownFreq.Name = "DownFreq";
-            DownFreq.Size = new Size(130, 25);
-            DownFreq.TabIndex = 1;
-            DownFreq.Text = "Aguardando..";
+            lblDownFreq.Anchor = AnchorStyles.None;
+            lblDownFreq.AutoSize = true;
+            lblDownFreq.BackColor = SystemColors.ControlLightLight;
+            lblDownFreq.BorderStyle = BorderStyle.Fixed3D;
+            lblDownFreq.Font = new Font("Arial", 15F);
+            lblDownFreq.Location = new Point(66, 63);
+            lblDownFreq.Name = "lblDownFreq";
+            lblDownFreq.Size = new Size(130, 25);
+            lblDownFreq.TabIndex = 1;
+            lblDownFreq.Text = "Aguardando..";
             // 
             // tableLayoutPanel7
             // 
@@ -577,7 +578,7 @@
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel7.Controls.Add(UpFreqFix, 0, 0);
-            tableLayoutPanel7.Controls.Add(UpFreq, 0, 1);
+            tableLayoutPanel7.Controls.Add(lblUpFreq, 0, 1);
             tableLayoutPanel7.Dock = DockStyle.Fill;
             tableLayoutPanel7.Location = new Point(519, 327);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -599,18 +600,18 @@
             UpFreqFix.TabIndex = 0;
             UpFreqFix.Text = "Frequência Superior (Hz)";
             // 
-            // UpFreq
+            // lblUpFreq
             // 
-            UpFreq.Anchor = AnchorStyles.None;
-            UpFreq.AutoSize = true;
-            UpFreq.BackColor = SystemColors.ControlLightLight;
-            UpFreq.BorderStyle = BorderStyle.Fixed3D;
-            UpFreq.Font = new Font("Arial", 15F);
-            UpFreq.Location = new Point(66, 63);
-            UpFreq.Name = "UpFreq";
-            UpFreq.Size = new Size(130, 25);
-            UpFreq.TabIndex = 1;
-            UpFreq.Text = "Aguardando..";
+            lblUpFreq.Anchor = AnchorStyles.None;
+            lblUpFreq.AutoSize = true;
+            lblUpFreq.BackColor = SystemColors.ControlLightLight;
+            lblUpFreq.BorderStyle = BorderStyle.Fixed3D;
+            lblUpFreq.Font = new Font("Arial", 15F);
+            lblUpFreq.Location = new Point(66, 63);
+            lblUpFreq.Name = "lblUpFreq";
+            lblUpFreq.Size = new Size(130, 25);
+            lblUpFreq.TabIndex = 1;
+            lblUpFreq.Text = "Aguardando..";
             // 
             // tableLayoutPanel6
             // 
@@ -620,7 +621,7 @@
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel6.Controls.Add(DownLimFix, 0, 0);
-            tableLayoutPanel6.Controls.Add(DownLim, 0, 1);
+            tableLayoutPanel6.Controls.Add(lblDownLim, 0, 1);
             tableLayoutPanel6.Dock = DockStyle.Fill;
             tableLayoutPanel6.Location = new Point(261, 435);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -642,18 +643,18 @@
             DownLimFix.TabIndex = 0;
             DownLimFix.Text = "Limite Inferior (dB)";
             // 
-            // DownLim
+            // lblDownLim
             // 
-            DownLim.Anchor = AnchorStyles.None;
-            DownLim.AutoSize = true;
-            DownLim.BackColor = SystemColors.ControlLightLight;
-            DownLim.BorderStyle = BorderStyle.Fixed3D;
-            DownLim.Font = new Font("Arial", 15F);
-            DownLim.Location = new Point(61, 63);
-            DownLim.Name = "DownLim";
-            DownLim.Size = new Size(130, 25);
-            DownLim.TabIndex = 1;
-            DownLim.Text = "Aguardando..";
+            lblDownLim.Anchor = AnchorStyles.None;
+            lblDownLim.AutoSize = true;
+            lblDownLim.BackColor = SystemColors.ControlLightLight;
+            lblDownLim.BorderStyle = BorderStyle.Fixed3D;
+            lblDownLim.Font = new Font("Arial", 15F);
+            lblDownLim.Location = new Point(61, 63);
+            lblDownLim.Name = "lblDownLim";
+            lblDownLim.Size = new Size(130, 25);
+            lblDownLim.TabIndex = 1;
+            lblDownLim.Text = "Aguardando..";
             // 
             // tableLayoutPanel5
             // 
@@ -663,7 +664,7 @@
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel5.Controls.Add(UpLimFix, 0, 0);
-            tableLayoutPanel5.Controls.Add(UpLim, 0, 1);
+            tableLayoutPanel5.Controls.Add(lblUpLim, 0, 1);
             tableLayoutPanel5.Dock = DockStyle.Fill;
             tableLayoutPanel5.Location = new Point(261, 327);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -685,18 +686,18 @@
             UpLimFix.TabIndex = 0;
             UpLimFix.Text = "Limite Superior (dB)";
             // 
-            // UpLim
+            // lblUpLim
             // 
-            UpLim.Anchor = AnchorStyles.None;
-            UpLim.AutoSize = true;
-            UpLim.BackColor = SystemColors.ControlLightLight;
-            UpLim.BorderStyle = BorderStyle.Fixed3D;
-            UpLim.Font = new Font("Arial", 15F);
-            UpLim.Location = new Point(61, 63);
-            UpLim.Name = "UpLim";
-            UpLim.Size = new Size(130, 25);
-            UpLim.TabIndex = 1;
-            UpLim.Text = "Aguardando..";
+            lblUpLim.Anchor = AnchorStyles.None;
+            lblUpLim.AutoSize = true;
+            lblUpLim.BackColor = SystemColors.ControlLightLight;
+            lblUpLim.BorderStyle = BorderStyle.Fixed3D;
+            lblUpLim.Font = new Font("Arial", 15F);
+            lblUpLim.Location = new Point(61, 63);
+            lblUpLim.Name = "lblUpLim";
+            lblUpLim.Size = new Size(130, 25);
+            lblUpLim.TabIndex = 1;
+            lblUpLim.Text = "Aguardando..";
             // 
             // tableLayoutPanel3
             // 
@@ -706,7 +707,7 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel3.Controls.Add(RefLvlFix, 0, 0);
-            tableLayoutPanel3.Controls.Add(RefLvl, 0, 1);
+            tableLayoutPanel3.Controls.Add(lblRefLvl, 0, 1);
             tableLayoutPanel3.Dock = DockStyle.Fill;
             tableLayoutPanel3.Location = new Point(261, 219);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -728,18 +729,18 @@
             RefLvlFix.TabIndex = 0;
             RefLvlFix.Text = "Nível de Referência (dB)";
             // 
-            // RefLvl
+            // lblRefLvl
             // 
-            RefLvl.Anchor = AnchorStyles.None;
-            RefLvl.AutoSize = true;
-            RefLvl.BackColor = SystemColors.ControlLightLight;
-            RefLvl.BorderStyle = BorderStyle.Fixed3D;
-            RefLvl.Font = new Font("Arial", 15F);
-            RefLvl.Location = new Point(61, 63);
-            RefLvl.Name = "RefLvl";
-            RefLvl.Size = new Size(130, 25);
-            RefLvl.TabIndex = 1;
-            RefLvl.Text = "Aguardando..";
+            lblRefLvl.Anchor = AnchorStyles.None;
+            lblRefLvl.AutoSize = true;
+            lblRefLvl.BackColor = SystemColors.ControlLightLight;
+            lblRefLvl.BorderStyle = BorderStyle.Fixed3D;
+            lblRefLvl.Font = new Font("Arial", 15F);
+            lblRefLvl.Location = new Point(61, 63);
+            lblRefLvl.Name = "lblRefLvl";
+            lblRefLvl.Size = new Size(130, 25);
+            lblRefLvl.TabIndex = 1;
+            lblRefLvl.Text = "Aguardando..";
             // 
             // tableLayoutPanel2
             // 
@@ -749,7 +750,7 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Controls.Add(ParMedFixed, 0, 0);
-            tableLayoutPanel2.Controls.Add(ParMed, 0, 1);
+            tableLayoutPanel2.Controls.Add(lblParMed, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(261, 111);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -770,18 +771,18 @@
             ParMedFixed.TabIndex = 0;
             ParMedFixed.Text = "Parâmetro Medido";
             // 
-            // ParMed
+            // lblParMed
             // 
-            ParMed.Anchor = AnchorStyles.None;
-            ParMed.AutoSize = true;
-            ParMed.BackColor = SystemColors.ControlLightLight;
-            ParMed.BorderStyle = BorderStyle.Fixed3D;
-            ParMed.Font = new Font("Arial", 15F);
-            ParMed.Location = new Point(61, 63);
-            ParMed.Name = "ParMed";
-            ParMed.Size = new Size(130, 25);
-            ParMed.TabIndex = 1;
-            ParMed.Text = "Aguardando..";
+            lblParMed.Anchor = AnchorStyles.None;
+            lblParMed.AutoSize = true;
+            lblParMed.BackColor = SystemColors.ControlLightLight;
+            lblParMed.BorderStyle = BorderStyle.Fixed3D;
+            lblParMed.Font = new Font("Arial", 15F);
+            lblParMed.Location = new Point(61, 63);
+            lblParMed.Name = "lblParMed";
+            lblParMed.Size = new Size(130, 25);
+            lblParMed.TabIndex = 1;
+            lblParMed.Text = "Aguardando..";
             // 
             // tableLayoutPanel10
             // 
@@ -881,7 +882,7 @@
             tableLayoutPanel12.ColumnCount = 2;
             tableLayoutPanel12.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel12.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel12.Controls.Add(DataLbl, 1, 1);
+            tableLayoutPanel12.Controls.Add(lblDataLbl, 1, 1);
             tableLayoutPanel12.Controls.Add(NúmeroLblFix, 0, 0);
             tableLayoutPanel12.Controls.Add(NumUpDown, 0, 1);
             tableLayoutPanel12.Controls.Add(DataLblFix, 1, 0);
@@ -895,18 +896,18 @@
             tableLayoutPanel12.Size = new Size(244, 69);
             tableLayoutPanel12.TabIndex = 1;
             // 
-            // DataLbl
+            // lblDataLbl
             // 
-            DataLbl.Anchor = AnchorStyles.None;
-            DataLbl.AutoSize = true;
-            DataLbl.BackColor = SystemColors.ControlLightLight;
-            DataLbl.BorderStyle = BorderStyle.Fixed3D;
-            DataLbl.Font = new Font("Arial", 12F);
-            DataLbl.Location = new Point(130, 41);
-            DataLbl.Name = "DataLbl";
-            DataLbl.Size = new Size(104, 20);
-            DataLbl.TabIndex = 3;
-            DataLbl.Text = "Aguardando..";
+            lblDataLbl.Anchor = AnchorStyles.None;
+            lblDataLbl.AutoSize = true;
+            lblDataLbl.BackColor = SystemColors.ControlLightLight;
+            lblDataLbl.BorderStyle = BorderStyle.Fixed3D;
+            lblDataLbl.Font = new Font("Arial", 12F);
+            lblDataLbl.Location = new Point(130, 41);
+            lblDataLbl.Name = "lblDataLbl";
+            lblDataLbl.Size = new Size(104, 20);
+            lblDataLbl.TabIndex = 3;
+            lblDataLbl.Text = "Aguardando..";
             // 
             // NúmeroLblFix
             // 
@@ -929,7 +930,6 @@
             NumUpDown.Name = "NumUpDown";
             NumUpDown.Size = new Size(98, 26);
             NumUpDown.TabIndex = 1;
-            NumUpDown.ValueChanged += NumUpDown_ValueChanged;
             // 
             // DataLblFix
             // 
@@ -967,8 +967,8 @@
             tableLayoutPanel15.ColumnCount = 2;
             tableLayoutPanel15.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 67.34694F));
             tableLayoutPanel15.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32.65306F));
-            tableLayoutPanel15.Controls.Add(FilePathAndName, 0, 0);
-            tableLayoutPanel15.Controls.Add(FileSelectBtn, 1, 0);
+            tableLayoutPanel15.Controls.Add(lblFilePathAndName, 0, 0);
+            tableLayoutPanel15.Controls.Add(btnFileSelect, 1, 0);
             tableLayoutPanel15.Dock = DockStyle.Fill;
             tableLayoutPanel15.Location = new Point(4, 54);
             tableLayoutPanel15.Name = "tableLayoutPanel15";
@@ -978,32 +978,32 @@
             tableLayoutPanel15.Size = new Size(244, 44);
             tableLayoutPanel15.TabIndex = 2;
             // 
-            // FilePathAndName
+            // lblFilePathAndName
             // 
-            FilePathAndName.Anchor = AnchorStyles.None;
-            FilePathAndName.AutoSize = true;
-            FilePathAndName.BackColor = SystemColors.ControlLightLight;
-            FilePathAndName.BorderStyle = BorderStyle.Fixed3D;
-            FilePathAndName.Font = new Font("Arial", 12F);
-            FilePathAndName.Location = new Point(30, 12);
-            FilePathAndName.Name = "FilePathAndName";
-            FilePathAndName.Size = new Size(104, 20);
-            FilePathAndName.TabIndex = 4;
-            FilePathAndName.Text = "Aguardando..";
+            lblFilePathAndName.Anchor = AnchorStyles.None;
+            lblFilePathAndName.AutoSize = true;
+            lblFilePathAndName.BackColor = SystemColors.ControlLightLight;
+            lblFilePathAndName.BorderStyle = BorderStyle.Fixed3D;
+            lblFilePathAndName.Font = new Font("Arial", 12F);
+            lblFilePathAndName.Location = new Point(30, 12);
+            lblFilePathAndName.Name = "lblFilePathAndName";
+            lblFilePathAndName.Size = new Size(104, 20);
+            lblFilePathAndName.TabIndex = 4;
+            lblFilePathAndName.Text = "Aguardando..";
             // 
-            // FileSelectBtn
+            // btnFileSelect
             // 
-            FileSelectBtn.BackColor = SystemColors.Highlight;
-            FileSelectBtn.BackgroundImageLayout = ImageLayout.Zoom;
-            FileSelectBtn.Dock = DockStyle.Fill;
-            FileSelectBtn.FlatStyle = FlatStyle.Flat;
-            FileSelectBtn.Location = new Point(167, 4);
-            FileSelectBtn.Name = "FileSelectBtn";
-            FileSelectBtn.Size = new Size(73, 36);
-            FileSelectBtn.TabIndex = 5;
-            FileSelectBtn.Text = "Selecionar";
-            FileSelectBtn.UseVisualStyleBackColor = false;
-            FileSelectBtn.Click += FileSelectBtn_Click;
+            btnFileSelect.BackColor = SystemColors.Highlight;
+            btnFileSelect.BackgroundImageLayout = ImageLayout.Zoom;
+            btnFileSelect.Dock = DockStyle.Fill;
+            btnFileSelect.FlatStyle = FlatStyle.Flat;
+            btnFileSelect.Location = new Point(167, 4);
+            btnFileSelect.Name = "btnFileSelect";
+            btnFileSelect.Size = new Size(73, 36);
+            btnFileSelect.TabIndex = 5;
+            btnFileSelect.Text = "Selecionar";
+            btnFileSelect.UseVisualStyleBackColor = false;
+            btnFileSelect.Click += FileSelectBtn_Click;
             // 
             // FileSelectFix
             // 
@@ -1230,25 +1230,25 @@
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel2;
         private Label ParMedFixed;
-        private Label ParMed;
+        private Label lblParMed;
         private TableLayoutPanel tableLayoutPanel3;
         private Label RefLvlFix;
-        private Label RefLvl;
+        private Label lblRefLvl;
         private TableLayoutPanel tableLayoutPanel6;
         private Label DownLimFix;
-        private Label DownLim;
+        private Label lblDownLim;
         private TableLayoutPanel tableLayoutPanel5;
         private Label UpLimFix;
-        private Label UpLim;
+        private Label lblUpLim;
         private TableLayoutPanel tableLayoutPanel4;
         private Label label1;
         private Label label2;
         private TableLayoutPanel tableLayoutPanel9;
         private Label DownFreqFix;
-        private Label DownFreq;
+        private Label lblDownFreq;
         private TableLayoutPanel tableLayoutPanel7;
         private Label UpFreqFix;
-        private Label UpFreq;
+        private Label lblUpFreq;
         private TableLayoutPanel tableLayoutPanel8;
         private Label label3;
         private Label label4;
@@ -1259,11 +1259,11 @@
         private Label NúmeroLblFix;
         private NumericUpDown NumUpDown;
         private Label DataLblFix;
-        private Label DataLbl;
+        private Label lblDataLbl;
         private TableLayoutPanel tableLayoutPanel13;
         private TableLayoutPanel tableLayoutPanel15;
-        private Label FilePathAndName;
-        private Button FileSelectBtn;
+        private Label lblFilePathAndName;
+        private Button btnFileSelect;
         private Label FileSelectFix;
         private TableLayoutPanel tableLayoutPanel14;
         private Label label5;
@@ -1291,9 +1291,9 @@
         private TableLayoutPanel tableLayoutPanel25;
         private Button button5;
         private Button button4;
-        private Button button6;
+        private Button btnExcelToProgram;
         private TableLayoutPanel tableLayoutPanel27;
-        private Button button7;
+        private Button btnSaveToExcel;
         private TableLayoutPanel tableLayoutPanel19;
         private Button btnTestGenerator;
         private TableLayoutPanel tableLayoutPanel20;
