@@ -92,7 +92,7 @@ namespace dosimetro_iec_61252
             return worksheet.Cells[row, column].Value?.ToString();
         }
 
-        public void write_cell(string sheet_name, int row, int column, string value)
+        public void write_cell(string sheet_name, int row, int column, string value, bool save = true)
         {
             if (_package == null)
             {
@@ -101,6 +101,19 @@ namespace dosimetro_iec_61252
 
             ExcelWorksheet worksheet = _package.Workbook.Worksheets[sheet_name];
             worksheet.Cells[row, column].Value = value;
+            
+            if (save)
+            {
+                _package.Save();
+            }
+        }
+
+        public void save ()
+        {
+            if (_package == null)
+            {
+                throw new InvalidOperationException("initialize the excel_file_manager first by calling init method.");
+            }
             _package.Save();
         }
     }

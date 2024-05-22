@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Primitives;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,49 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace dosimetro_iec_61252
 {
-    public partial class Form2 : Form
+    public partial class Form3 : Form
     {
 
-        private screens_manager _screen_manager;
         private Form1 _form1;
-        linear_screen lin_scr;
+        private screens_manager _screen_manager;
+        string[] ref_values_0 = { "63,10 Hz", "125,89 Hz", "251,19 Hz", "501,19 Hz", "1000,00 Hz", "1995,26 Hz", "3981,07 Hz", "7943,28 Hz" };
+        string[] ref_values = new string[8];
         bool _start_consider_change_event = false;
-
         int _conf_value = 0;
 
-        string[] ref_values_094 = { "140 dB", "130 dB", "120 dB", "110 dB", "100 dB", "94 dB", "90 dB", "80 dB", "65 dB" };
-        string[] ref_values_114 = { "140 dB", "130 dB", "120 dB", "114 dB", "110 dB", "100 dB", "90 dB", "80 dB", "65 dB" }; 
-        string[] ref_values = new string[9];
-        public Form2(Form1 form, screens_manager screen_manager)
+        public Form3(Form1 form, screens_manager screen_manager)
         {
             _form1 = form;
             _screen_manager = screen_manager;
             InitializeComponent();
 
-            if (_screen_manager._lin_screen.get_ref_val() == "94")
-            {
-                ref_values = ref_values_094;
-            }
-            else
-            {
-                ref_values = ref_values_114;
-            }
-            lblRef.Text = _screen_manager._lin_screen.get_ref_val();
+            ref_values = ref_values_0;
 
-            string temp_val = lblRef.Text + " dB" + " / " + "0,0" + "Vpp";
-            lblLevelRef.Text = temp_val;
-
-
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 8; i++)
             {
                 dataGridView1.Rows.Add();
             }
 
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 8; i++)
             {
                 dataGridView1.Rows[i].Cells[0].Value = ref_values[i];
             }
@@ -58,10 +41,9 @@ namespace dosimetro_iec_61252
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
 
-            _start_consider_change_event = true;
-            screen_manager._lin_screen.update_reference_values(ref_values);
+            screen_manager._resp_screen.update_reference_values(ref_values);
 
-            lblConfVal.Text = ref_values[_conf_value];
+            _start_consider_change_event = true;
 
             if (!_screen_manager.have_sheet_configured())
             {
@@ -94,6 +76,17 @@ namespace dosimetro_iec_61252
             }
         }
 
+        private void tbxVpp_TextChanged(object sender, EventArgs e)
+        {
+            if (tbxVpp.Text.Length > 0)
+            {
+                string temp_val = lblRef.Text + " dB" + " / " + tbxVpp.Text + " Vpp";
+                lblLevelRef.Text = temp_val;
+
+                _screen_manager._resp_screen.update_vpp_level(tbxVpp.Text);
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             int num_rows = dataGridView1.Rows.Count;
@@ -114,34 +107,8 @@ namespace dosimetro_iec_61252
                     _vals_matrix[i][j] = string_value;
                 }
             }
-            _screen_manager._lin_screen.public_update_mesaure_value(_vals_matrix, num_rows, num_cols);
-        }
-
-        private void tbxVpp_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbxVpp_Leave(object sender, EventArgs e)
-        {
-            if (tbxVpp.Text.Length > 0)
-            {
-                string temp_val = lblRef.Text + " dB" + " / " + tbxVpp.Text + " Vpp";
-                lblLevelRef.Text = temp_val;
-
-                _screen_manager._lin_screen.update_vpp_level(tbxVpp.Text);
-            }
-        }
-
-        private void tableLayoutPanel2_Click(object sender, EventArgs e)
-        {
-            Point mousePosition = this.PointToClient(MousePosition);
-            Control control = this.GetChildAtPoint(mousePosition);
-
-            if (control != null && control != tbxVpp)
-            {
-                this.ActiveControl = null; // Remove o foco de qualquer controle
-            }
+            _screen_manager._resp_screen.public_update_mesaure_value(_vals_matrix, num_rows, num_cols);
+            
         }
     }
 }

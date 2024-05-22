@@ -32,13 +32,13 @@ namespace dosimetro_iec_61252
 
             screen_manager._init_screen.update_from_excel();
 
-            lblParMed.Text   = screen_manager._init_screen._par_med;
-            lblRefLvl.Text   = screen_manager._init_screen._ref_level;
-            lblUpLim.Text    = screen_manager._init_screen._up_lim_db;
-            lblDownLim.Text  = screen_manager._init_screen._down_lim_db;
-            lblUpFreq.Text   = screen_manager._init_screen._up_lim_freq;
+            lblParMed.Text = screen_manager._init_screen._par_med;
+            lblRefLvl.Text = screen_manager._init_screen._ref_level;
+            lblUpLim.Text = screen_manager._init_screen._up_lim_db;
+            lblDownLim.Text = screen_manager._init_screen._down_lim_db;
+            lblUpFreq.Text = screen_manager._init_screen._up_lim_freq;
             lblDownFreq.Text = screen_manager._init_screen._down_lim_freq;
-            lblDataLbl.Text  = screen_manager._init_screen._cert_data;
+            lblDataLbl.Text = screen_manager._init_screen._cert_data;
 
             if (screen_manager._init_screen._umid != null)
             {
@@ -70,9 +70,9 @@ namespace dosimetro_iec_61252
                 return;
             }
 
-            screen_manager._init_screen._umid     = umidUpDown.Value.ToString();
-            screen_manager._init_screen._temp     = tempUpDown.Value.ToString();
-            screen_manager._init_screen._press    = pressUpDown.Value.ToString();
+            screen_manager._init_screen._umid = umidUpDown.Value.ToString();
+            screen_manager._init_screen._temp = tempUpDown.Value.ToString();
+            screen_manager._init_screen._press = pressUpDown.Value.ToString();
             screen_manager._init_screen._cert_num = NumUpDown.Value.ToString();
 
             screen_manager._init_screen.update_to_excel();
@@ -84,6 +84,13 @@ namespace dosimetro_iec_61252
         {
             Form2 tela2 = new Form2(this, screen_manager);
             tela2.Show();
+            this.Hide(); // Esconde o formulário principal
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form3 tela3 = new Form3(this, screen_manager);
+            tela3.Show();
             this.Hide(); // Esconde o formulário principal
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace dosimetro_iec_61252
 {
-    partial class Form2
+    partial class Form3
     {
         /// <summary>
         /// Required designer variable.
@@ -94,7 +94,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(800, 450);
-            tableLayoutPanel1.TabIndex = 2;
+            tableLayoutPanel1.TabIndex = 3;
             // 
             // tableLayoutPanel21
             // 
@@ -194,11 +194,11 @@
             header1.AutoSize = true;
             header1.BackColor = Color.FromArgb(192, 192, 255);
             header1.Font = new Font("Arial Black", 15F);
-            header1.Location = new Point(5, 0);
+            header1.Location = new Point(22, 12);
             header1.Name = "header1";
-            header1.Size = new Size(247, 80);
+            header1.Size = new Size(213, 56);
             header1.TabIndex = 0;
-            header1.Text = "Teste de Linearlidade e Sinais Estacionários";
+            header1.Text = "Teste de Resposta em Frequência";
             header1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
@@ -224,7 +224,6 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 25.0741844F));
             tableLayoutPanel2.Size = new Size(258, 338);
             tableLayoutPanel2.TabIndex = 15;
-            tableLayoutPanel2.Click += tableLayoutPanel2_Click;
             // 
             // lblRef
             // 
@@ -253,11 +252,11 @@
             label4.Anchor = AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Arial", 14F);
-            label4.Location = new Point(39, 31);
+            label4.Location = new Point(28, 20);
             label4.Name = "label4";
-            label4.Size = new Size(99, 22);
+            label4.Size = new Size(110, 44);
             label4.TabIndex = 6;
-            label4.Text = "Nível (dB):";
+            label4.Text = "Frequência (Hz):";
             // 
             // tbxAmplAdjust
             // 
@@ -275,7 +274,6 @@
             tbxVpp.Size = new Size(88, 23);
             tbxVpp.TabIndex = 2;
             tbxVpp.TextChanged += tbxVpp_TextChanged;
-            tbxVpp.Leave += tbxVpp_Leave;
             // 
             // label1
             // 
@@ -386,25 +384,28 @@
             ValuesColumn.ReadOnly = true;
             ValuesColumn.Resizable = DataGridViewTriState.True;
             ValuesColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
-            ValuesColumn.Width = 90;
+            ValuesColumn.Width = 125;
             // 
             // Med1
             // 
             Med1.HeaderText = "Med#1";
             Med1.Name = "Med1";
             Med1.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Med1.Width = 88;
             // 
             // Med2
             // 
             Med2.HeaderText = "Med#2";
             Med2.Name = "Med2";
             Med2.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Med2.Width = 88;
             // 
             // Med3
             // 
             Med3.HeaderText = "Med#3";
             Med3.Name = "Med3";
             Med3.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Med3.Width = 88;
             // 
             // tableLayoutPanel4
             // 
@@ -446,15 +447,15 @@
             lblConfVal.Text = "Aguardando..";
             lblConfVal.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // Form2
+            // Form3
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(tableLayoutPanel1);
-            Name = "Form2";
+            Name = "Form3";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Teste de Linearlidade e Sinais Estacionários";
+            Text = "Form3";
             WindowState = FormWindowState.Maximized;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
@@ -476,30 +477,30 @@
 
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel tableLayoutPanel21;
-        private TableLayoutPanel tableLayoutPanel10;
         private TableLayoutPanel tableLayoutPanel26;
         private Button button6;
+        private TableLayoutPanel tableLayoutPanel5;
+        private Button button1;
+        private TableLayoutPanel tableLayoutPanel10;
         private Label header1;
-        private DataGridView dataGridView1;
         private TableLayoutPanel tableLayoutPanel2;
+        private Label lblRef;
+        private Label lblLevelRef;
+        private Label label4;
         private TextBox tbxAmplAdjust;
         private TextBox tbxVpp;
         private Label label1;
         private Label label2;
         private Label label3;
-        private Label lblLevelRef;
-        private Label label4;
         private CheckBox cbxAmpAdj;
         private TableLayoutPanel tableLayoutPanel3;
+        private DataGridView dataGridView1;
+        private TableLayoutPanel tableLayoutPanel4;
+        private Label label6;
+        private Label lblConfVal;
         private DataGridViewTextBoxColumn ValuesColumn;
         private DataGridViewTextBoxColumn Med1;
         private DataGridViewTextBoxColumn Med2;
         private DataGridViewTextBoxColumn Med3;
-        private TableLayoutPanel tableLayoutPanel4;
-        private Label label6;
-        private Label lblConfVal;
-        private TableLayoutPanel tableLayoutPanel5;
-        private Button button1;
-        private Label lblRef;
     }
 }
