@@ -455,7 +455,7 @@
             Controls.Add(tableLayoutPanel1);
             Name = "Form3";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form3";
+            Text = "Teste de Resposta em Frequência";
             WindowState = FormWindowState.Maximized;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();

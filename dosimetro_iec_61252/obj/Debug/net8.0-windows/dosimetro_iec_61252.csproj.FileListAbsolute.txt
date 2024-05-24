@@ -61,3 +61,7 @@ C:\Users\Daniel\Documents\Projetos_criffer\criffer_dosimeter_iec_61252\dosimetro
 C:\Users\Daniel\Documents\Projetos_criffer\criffer_dosimeter_iec_61252\dosimetro_iec_61252\obj\Debug\net8.0-windows\ref\dosimetro_iec_61252.dll
 C:\Users\Daniel\Documents\Projetos_criffer\criffer_dosimeter_iec_61252\dosimetro_iec_61252\obj\Debug\net8.0-windows\dosimetro_iec_61252.Form2.resources
 C:\Users\Daniel\Documents\Projetos_criffer\criffer_dosimeter_iec_61252\dosimetro_iec_61252\obj\Debug\net8.0-windows\dosimetro_iec_61252.Form3.resources
+C:\Users\Daniel\Documents\Projetos_criffer\criffer_dosimeter_iec_61252\dosimetro_iec_61252\obj\Debug\net8.0-windows\dosimetro_iec_61252.Form4.resources
+C:\Users\Daniel\Documents\Projetos_criffer\criffer_dosimeter_iec_61252\dosimetro_iec_61252\obj\Debug\net8.0-windows\dosimetro_iec_61252.Form5.resources
+C:\Users\Daniel\Documents\Projetos_criffer\criffer_dosimeter_iec_61252\dosimetro_iec_61252\obj\Debug\net8.0-windows\dosimetro_iec_61252.Form6.resources
+C:\Users\Daniel\Documents\Projetos_criffer\criffer_dosimeter_iec_61252\dosimetro_iec_61252\obj\Debug\net8.0-windows\dosimetro_iec_61252.Form7.resources

@@ -93,5 +93,38 @@ namespace dosimetro_iec_61252
             tela3.Show();
             this.Hide(); // Esconde o formulário principal
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (lblParMed.Text == "Exposição")
+            {
+                Form5 tela5 = new Form5(this, screen_manager);
+                tela5.Show();
+                this.Hide(); // Esconde o formulário principal
+            }
+            else
+            {
+                Form4 tela4 = new Form4(this, screen_manager);
+                tela4.Show();
+                this.Hide(); // Esconde o formulário principal
+            }
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (lblParMed.Text == "Exposição")
+            {
+                Form6 tela6 = new Form6(this, screen_manager);
+                tela6.Show();
+                this.Hide(); // Esconde o formulário principal
+            }
+            else
+            {
+                Form7 tela7 = new Form7(this, screen_manager);
+                tela7.Show();
+                this.Hide(); // Esconde o formulário principal
+            }
+        }
     }
 }

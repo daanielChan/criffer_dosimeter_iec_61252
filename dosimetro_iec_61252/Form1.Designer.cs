@@ -241,6 +241,7 @@
             button3.TabIndex = 8;
             button3.Text = "Sinais de Curta Duração";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -846,6 +847,7 @@
             button4.TabIndex = 9;
             button4.Text = "Pulsos Unipolares";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // tableLayoutPanel11
             // 
