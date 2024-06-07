@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace dosimetro_iec_61252
 {
-
     public class respfreq_screen
     {
         private excel_file_manager ex_file = new excel_file_manager();
@@ -33,13 +32,14 @@ namespace dosimetro_iec_61252
 
             ex_file.init(_sheet_path, _sheet_name);
 
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 10; i++)
             {
-                ex_file.write_cell(sheet_name_internal, 7 + i, 1, _tab_meas[i], true);
+                _tab_meas[i] = ex_file.read_cell(sheet_name_internal, 20 + i, 1);
             }
 
             ex_file.close();
         }
+
         public void public_update_mesaure_value(string[][] value, int rows, int cols)
         {
             ex_file.init(_sheet_path, _sheet_name);
@@ -65,9 +65,24 @@ namespace dosimetro_iec_61252
             string ret_val = ex_file.read_cell(sheet_name_internal, 3, 2);
             ex_file.close();
             return ret_val;
+        }     
+
+        public string get_vpp()
+        {
+            if (_sheet_name == string.Empty || _sheet_path == string.Empty)
+            {
+                return "";
+            }
+            string vpp = string.Empty;
+
+            ex_file.init(_sheet_path, _sheet_name);
+            vpp = ex_file.read_cell(sheet_name_internal, 2, 2);
+            ex_file.close();
+
+            return vpp;
         }
 
-        public void update_vpp_level(string value)
+        public void update_vpp(string value)
         {
             if (_sheet_name == string.Empty || _sheet_path == string.Empty)
             {

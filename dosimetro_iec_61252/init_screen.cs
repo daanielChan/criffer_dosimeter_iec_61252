@@ -67,6 +67,19 @@ namespace dosimetro_iec_61252
             _cert_num  = excel_file.read_cell(sheet_name_internal, 3, 4);
             _cert_data = excel_file.read_cell(sheet_name_internal, 5, 4);
 
+            if (_umid == "")
+            {
+                _umid = "0";
+            }
+            if (_press == "")
+            {
+                _press = "0";
+            }
+            if (_temp == "")
+            {
+                _temp = "0";
+            }
+
             excel_file.close();
         }
 
@@ -74,11 +87,12 @@ namespace dosimetro_iec_61252
         {
             excel_file.init(_file_path, _file_name);
             
-            excel_file.write_cell (sheet_name_internal, 3, 6, _umid);
-            excel_file.write_cell (sheet_name_internal, 4, 6, _temp);
-            excel_file.write_cell (sheet_name_internal, 5, 6, _press);
-            excel_file.write_cell (sheet_name_internal, 3, 4, _cert_num);
-            
+            excel_file.write_cell (sheet_name_internal, 3, 6, _umid, false);
+            excel_file.write_cell (sheet_name_internal, 4, 6, _temp, false);
+            excel_file.write_cell (sheet_name_internal, 5, 6, _press, false);
+            excel_file.write_cell (sheet_name_internal, 3, 4, _cert_num, false);
+
+            excel_file.save();
             excel_file.close();
         }
     }

@@ -1,3 +1,5 @@
+using System.IO.Ports;
+
 namespace dosimetro_iec_61252
 {
     public partial class Form1 : Form
@@ -7,6 +9,37 @@ namespace dosimetro_iec_61252
         public Form1()
         {
             InitializeComponent();
+            string[] ports = null;
+
+            screen_manager._serial.get_available_coms(ref ports);
+
+            comboBox1.Items.Clear();
+            if (ports != null)
+            {
+                comboBox1.Items.AddRange(ports);
+                if (comboBox1.Items.Count > 0)
+                {
+                    comboBox1.SelectedIndex = 0; // Seleciona a primeira porta por padrão
+                }
+            }
+
+            comboBox1.DrawItem += (sender, e) =>
+            {
+                if (e.Index < 0)
+                    return;
+
+                e.DrawBackground();
+                string text = comboBox1.Items[e.Index].ToString();
+                using (StringFormat sf = new StringFormat())
+                {
+                    sf.LineAlignment = StringAlignment.Center;
+                    sf.Alignment = StringAlignment.Center;
+                    e.Graphics.DrawString(text, e.Font, Brushes.Black, e.Bounds, sf);
+                }
+            };
+
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList; // Impede a edição do texto
+            comboBox1.DrawMode = DrawMode.OwnerDrawFixed; // Define o modo de desenho personalizado
         }
 
         private void FileSelectBtn_Click(object sender, EventArgs e)
@@ -26,7 +59,7 @@ namespace dosimetro_iec_61252
         {
             if (lblFilePathAndName.Text == "Aguardando..")
             {
-                MessageBox.Show("Você precisa selecionar um arquivo Excel para carregar os valores.", "Atenção!");
+                MessageBox.Show("Você precisa selecionar um arquivo Excel para carregar os valores.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -59,14 +92,15 @@ namespace dosimetro_iec_61252
             {
                 NumUpDown.Value = int.Parse(screen_manager._init_screen._cert_num);
             }
-            MessageBox.Show("Operação Concluída!", "Operação com Arquivo Externo");
+
+            MessageBox.Show("Operação Concluída.", "Operação com Arquivo Externo");
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             if (lblFilePathAndName.Text == "Aguardando..")
             {
-                MessageBox.Show("Você precisa selecionar um arquivo Excel para salvar os valores.", "Atenção!");
+                MessageBox.Show("Você precisa selecionar um arquivo Excel para carregar os valores.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -77,11 +111,16 @@ namespace dosimetro_iec_61252
 
             screen_manager._init_screen.update_to_excel();
 
-            MessageBox.Show("Operação Concluída!", "Operação com Arquivo Externo");
+            MessageBox.Show("Operação Concluída.", "Operação com Arquivo Externo");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (lblParMed.Text == "Aguardando..")
+            {
+                MessageBox.Show("Clique em carregar do Excel para o correto funcionamento do programa.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             Form2 tela2 = new Form2(this, screen_manager);
             tela2.Show();
             this.Hide(); // Esconde o formulário principal
@@ -89,6 +128,11 @@ namespace dosimetro_iec_61252
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (lblParMed.Text == "Aguardando..")
+            {
+                MessageBox.Show("Clique em carregar do Excel para o correto funcionamento do programa.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             Form3 tela3 = new Form3(this, screen_manager);
             tela3.Show();
             this.Hide(); // Esconde o formulário principal
@@ -96,6 +140,12 @@ namespace dosimetro_iec_61252
 
         private void button3_Click(object sender, EventArgs e)
         {
+
+            if (lblParMed.Text == "Aguardando..")
+            {
+                MessageBox.Show("Clique em carregar do Excel para o correto funcionamento do programa.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             if (lblParMed.Text == "Exposição")
             {
                 Form5 tela5 = new Form5(this, screen_manager);
@@ -113,6 +163,12 @@ namespace dosimetro_iec_61252
 
         private void button4_Click(object sender, EventArgs e)
         {
+
+            if (lblParMed.Text == "Aguardando..")
+            {
+                MessageBox.Show("Clique em carregar do Excel para o correto funcionamento do programa.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             if (lblParMed.Text == "Exposição")
             {
                 Form6 tela6 = new Form6(this, screen_manager);
@@ -125,6 +181,18 @@ namespace dosimetro_iec_61252
                 tela7.Show();
                 this.Hide(); // Esconde o formulário principal
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (lblParMed.Text == "Aguardando..")
+            {
+                MessageBox.Show("Clique em carregar do Excel para o correto funcionamento do programa.", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            Form8 tela8 = new Form8(this, screen_manager);
+            tela8.Show();
+            this.Hide(); // Esconde o formulário principal
         }
     }
 }

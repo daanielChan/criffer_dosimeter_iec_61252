@@ -17,7 +17,9 @@ namespace dosimetro_iec_61252
         public string _sheet_path;
         
         private const string sheet_name_internal = "Lin";
-        
+        public string[] composed_vpp_dbname = new string [10];
+        string[] db_name = new string[10];
+
         public linear_screen()
         {
             _sheet_name = string.Empty;
@@ -36,8 +38,12 @@ namespace dosimetro_iec_61252
 
             for (int i = 0; i < 9; i++)
             {
-                ex_file.write_cell(sheet_name_internal, 7 + i, 1, _tab_meas[i]);
+                _tab_meas [i] = ex_file.read_cell(sheet_name_internal, 7 + i, 1);
+                db_name[i] = _tab_meas[i];
+
+                composed_vpp_dbname[i] = db_name[i] + " / X,XXX Vpp";
             }
+
 
             ex_file.close();
         }
@@ -56,6 +62,7 @@ namespace dosimetro_iec_61252
             ex_file.save();
             ex_file.close();
         }
+
         public string get_ref_val ()
         {
             if (_sheet_name == string.Empty || _sheet_path == string.Empty)
@@ -69,7 +76,23 @@ namespace dosimetro_iec_61252
             return ret_val;
         }
 
-        public void update_vpp_level (string value)
+
+        public string get_vpp()
+        {
+            if (_sheet_name == string.Empty || _sheet_path == string.Empty)
+            {
+                return "";
+            }
+            string vpp = string.Empty;
+
+            ex_file.init(_sheet_path, _sheet_name);
+            vpp = ex_file.read_cell(sheet_name_internal, 2, 2);
+            ex_file.close();
+
+            return vpp; 
+        }
+
+        public void update_vpp (string value)
         {
             if (_sheet_name == string.Empty || _sheet_path == string.Empty)
             {

@@ -28,10 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel21 = new TableLayoutPanel();
             tableLayoutPanel26 = new TableLayoutPanel();
@@ -54,16 +60,17 @@
             label4 = new Label();
             lblSigLvl = new Label();
             tableLayoutPanel8 = new TableLayoutPanel();
-            lblVpp = new Label();
+            txbVpp = new TextBox();
             label5 = new Label();
             tableLayoutPanel7 = new TableLayoutPanel();
-            label3 = new Label();
             tbxAdjust = new TextBox();
+            label3 = new Label();
             cbxAmpAdj = new CheckBox();
             tableLayoutPanel9 = new TableLayoutPanel();
             button2 = new Button();
             checkBox1 = new CheckBox();
             label7 = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel21.SuspendLayout();
             tableLayoutPanel26.SuspendLayout();
@@ -129,7 +136,7 @@
             tableLayoutPanel26.Name = "tableLayoutPanel26";
             tableLayoutPanel26.RowCount = 1;
             tableLayoutPanel26.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel26.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel26.RowStyles.Add(new RowStyle(SizeType.Absolute, 28F));
             tableLayoutPanel26.Size = new Size(108, 27);
             tableLayoutPanel26.TabIndex = 3;
             // 
@@ -173,6 +180,7 @@
             button1.TabIndex = 12;
             button1.Text = "Salvar Excel";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // tableLayoutPanel10
             // 
@@ -186,7 +194,7 @@
             tableLayoutPanel10.Name = "tableLayoutPanel10";
             tableLayoutPanel10.RowCount = 1;
             tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Absolute, 67F));
             tableLayoutPanel10.Size = new Size(554, 67);
             tableLayoutPanel10.TabIndex = 7;
             // 
@@ -197,11 +205,11 @@
             header1.AutoSize = true;
             header1.BackColor = Color.FromArgb(192, 192, 255);
             header1.Font = new Font("Arial Black", 15F);
-            header1.Location = new Point(59, 19);
+            header1.Location = new Point(55, 5);
             header1.Name = "header1";
-            header1.Size = new Size(435, 28);
+            header1.Size = new Size(443, 56);
             header1.TabIndex = 0;
-            header1.Text = "Teste de Resposta a Pulsos Unipolares";
+            header1.Text = "Exposição - Teste de Resposta a Pulsos Unipolares";
             header1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
@@ -242,19 +250,18 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel3.Size = new Size(548, 140);
             tableLayoutPanel3.TabIndex = 0;
-            tableLayoutPanel3.Paint += tableLayoutPanel3_Paint;
             // 
             // dataGridView1
             // 
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Font = new Font("Arial", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Arial", 12F);
             dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.BackgroundColor = Color.FromArgb(192, 192, 255);
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Arial", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.Font = new Font("Arial", 12F);
             dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -262,55 +269,73 @@
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ValuesColumn, Med1, Med2, Med3 });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Arial", 15F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = SystemColors.Window;
+            dataGridViewCellStyle7.Font = new Font("Arial", 12F);
+            dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.GridColor = Color.DarkBlue;
             dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Arial", 15F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Control;
+            dataGridViewCellStyle8.Font = new Font("Arial", 15F);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridView1.RowHeadersWidth = 62;
+            dataGridViewCellStyle9.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle9;
             dataGridView1.Size = new Size(542, 64);
             dataGridView1.TabIndex = 15;
             // 
             // ValuesColumn
             // 
+            dataGridViewCellStyle3.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            ValuesColumn.DefaultCellStyle = dataGridViewCellStyle3;
             ValuesColumn.HeaderText = "Referência";
+            ValuesColumn.MinimumWidth = 8;
             ValuesColumn.Name = "ValuesColumn";
             ValuesColumn.ReadOnly = true;
             ValuesColumn.Resizable = DataGridViewTriState.True;
             ValuesColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
-            ValuesColumn.Width = 500;
+            ValuesColumn.Width = 400;
             // 
             // Med1
             // 
+            dataGridViewCellStyle4.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Med1.DefaultCellStyle = dataGridViewCellStyle4;
             Med1.HeaderText = "Med#1";
+            Med1.MinimumWidth = 8;
             Med1.Name = "Med1";
             Med1.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Med1.Width = 150;
             // 
             // Med2
             // 
+            dataGridViewCellStyle5.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Med2.DefaultCellStyle = dataGridViewCellStyle5;
             Med2.HeaderText = "Med#2";
+            Med2.MinimumWidth = 8;
             Med2.Name = "Med2";
             Med2.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Med2.Width = 150;
             // 
             // Med3
             // 
+            dataGridViewCellStyle6.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Med3.DefaultCellStyle = dataGridViewCellStyle6;
             Med3.HeaderText = "Med#3";
+            Med3.MinimumWidth = 8;
             Med3.Name = "Med3";
             Med3.SortMode = DataGridViewColumnSortMode.NotSortable;
+            Med3.Width = 150;
             // 
             // tableLayoutPanel4
             // 
@@ -333,12 +358,10 @@
             comboBox1.Dock = DockStyle.Fill;
             comboBox1.Font = new Font("Arial", 15F);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Pulsos Positivos", "Pulsos Negativos" });
             comboBox1.Location = new Point(3, 35);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(346, 31);
             comboBox1.TabIndex = 16;
-            comboBox1.Text = "Selecionar Tipo de Pulso";
             // 
             // tableLayoutPanel6
             // 
@@ -408,7 +431,7 @@
             tableLayoutPanel8.ColumnCount = 2;
             tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
             tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
-            tableLayoutPanel8.Controls.Add(lblVpp, 1, 0);
+            tableLayoutPanel8.Controls.Add(txbVpp, 0, 0);
             tableLayoutPanel8.Controls.Add(label5, 0, 0);
             tableLayoutPanel8.Dock = DockStyle.Fill;
             tableLayoutPanel8.Location = new Point(3, 135);
@@ -418,17 +441,14 @@
             tableLayoutPanel8.Size = new Size(185, 60);
             tableLayoutPanel8.TabIndex = 1;
             // 
-            // lblVpp
+            // txbVpp
             // 
-            lblVpp.Anchor = AnchorStyles.Left;
-            lblVpp.AutoSize = true;
-            lblVpp.Font = new Font("Arial", 13F);
-            lblVpp.Location = new Point(114, 9);
-            lblVpp.Name = "lblVpp";
-            lblVpp.Size = new Size(67, 42);
-            lblVpp.TabIndex = 5;
-            lblVpp.Text = "Aguardando..";
-            lblVpp.TextAlign = ContentAlignment.MiddleCenter;
+            txbVpp.Anchor = AnchorStyles.Left;
+            txbVpp.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txbVpp.Location = new Point(114, 15);
+            txbVpp.Name = "txbVpp";
+            txbVpp.Size = new Size(68, 29);
+            txbVpp.TabIndex = 15;
             // 
             // label5
             // 
@@ -447,8 +467,8 @@
             tableLayoutPanel7.ColumnCount = 2;
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
             tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
+            tableLayoutPanel7.Controls.Add(tbxAdjust, 0, 0);
             tableLayoutPanel7.Controls.Add(label3, 0, 0);
-            tableLayoutPanel7.Controls.Add(tbxAdjust, 1, 0);
             tableLayoutPanel7.Dock = DockStyle.Fill;
             tableLayoutPanel7.Location = new Point(3, 3);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -456,6 +476,15 @@
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel7.Size = new Size(185, 60);
             tableLayoutPanel7.TabIndex = 0;
+            // 
+            // tbxAdjust
+            // 
+            tbxAdjust.Anchor = AnchorStyles.Left;
+            tbxAdjust.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxAdjust.Location = new Point(114, 15);
+            tbxAdjust.Name = "tbxAdjust";
+            tbxAdjust.Size = new Size(68, 29);
+            tbxAdjust.TabIndex = 15;
             // 
             // label3
             // 
@@ -469,14 +498,6 @@
             label3.Text = "Ajuste (dB):";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // tbxAdjust
-            // 
-            tbxAdjust.Anchor = AnchorStyles.Left;
-            tbxAdjust.Location = new Point(114, 18);
-            tbxAdjust.Name = "tbxAdjust";
-            tbxAdjust.Size = new Size(68, 23);
-            tbxAdjust.TabIndex = 3;
-            // 
             // cbxAmpAdj
             // 
             cbxAmpAdj.Anchor = AnchorStyles.None;
@@ -488,6 +509,7 @@
             cbxAmpAdj.TabIndex = 5;
             cbxAmpAdj.Text = "Ajustar Amplitude?";
             cbxAmpAdj.UseVisualStyleBackColor = true;
+            cbxAmpAdj.CheckedChanged += cbxAmpAdj_CheckedChanged;
             // 
             // tableLayoutPanel9
             // 
@@ -516,6 +538,7 @@
             button2.TabIndex = 13;
             button2.Text = "Iniciar Contagem";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click_1;
             // 
             // checkBox1
             // 
@@ -541,6 +564,10 @@
             label7.Text = "00:00:00";
             label7.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // timer1
+            // 
+            timer1.Interval = 1000;
+            // 
             // Form6
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -549,7 +576,7 @@
             Controls.Add(tableLayoutPanel1);
             Name = "Form6";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Teste de Resposta a Pulsos Unipolares";
+            Text = "Exposição - Teste de Resposta a Pulsos Unipolares";
             WindowState = FormWindowState.Maximized;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel21.ResumeLayout(false);
@@ -586,20 +613,14 @@
         private TableLayoutPanel tableLayoutPanel2;
         private TableLayoutPanel tableLayoutPanel3;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn ValuesColumn;
-        private DataGridViewTextBoxColumn Med1;
-        private DataGridViewTextBoxColumn Med2;
-        private DataGridViewTextBoxColumn Med3;
         private TableLayoutPanel tableLayoutPanel6;
         private TableLayoutPanel tableLayoutPanel11;
         private Label label4;
         private Label lblSigLvl;
         private TableLayoutPanel tableLayoutPanel8;
-        private Label lblVpp;
         private Label label5;
         private TableLayoutPanel tableLayoutPanel7;
         private Label label3;
-        private TextBox tbxAdjust;
         private CheckBox cbxAmpAdj;
         private CheckBox checkBox1;
         private Label label7;
@@ -607,5 +628,12 @@
         private Button button2;
         private ComboBox comboBox1;
         private TableLayoutPanel tableLayoutPanel4;
+        private DataGridViewTextBoxColumn ValuesColumn;
+        private DataGridViewTextBoxColumn Med1;
+        private DataGridViewTextBoxColumn Med2;
+        private DataGridViewTextBoxColumn Med3;
+        private TextBox txbVpp;
+        private TextBox tbxAdjust;
+        private System.Windows.Forms.Timer timer1;
     }
 }

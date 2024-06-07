@@ -11,6 +11,11 @@ namespace dosimetro_iec_61252
         public init_screen     _init_screen = new init_screen   ();
         public linear_screen   _lin_screen  = new linear_screen ();
         public respfreq_screen _resp_screen = new respfreq_screen ();
+        public fastpulses_screen _fastpulses = new fastpulses_screen();
+        public unipolarpulses_screen _unipolarpulses = new unipolarpulses_screen();
+        public overload_screen _overload = new overload_screen();
+
+        public serial_comms _serial = new serial_comms ();
 
         public string _sheet_name = string.Empty;
         public string _sheet_path = string.Empty;
@@ -33,6 +38,16 @@ namespace dosimetro_iec_61252
 
             _resp_screen._sheet_path = _sheet_path;
             _resp_screen._sheet_name = _sheet_name;
+
+            _fastpulses._sheet_path = _sheet_path;
+            _fastpulses._sheet_name = _sheet_name;
+
+            _unipolarpulses._sheet_name = _sheet_name;
+            _unipolarpulses._sheet_path = _sheet_path;
+
+
+            _overload._sheet_path = _sheet_path;
+            _overload._sheet_name = _sheet_name;
         }
 
         public bool have_sheet_configured ()

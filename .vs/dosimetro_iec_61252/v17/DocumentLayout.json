@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Daniel\\Documents\\Projetos_criffer\\criffer_dosimeter_iec_61252\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A7855AD1-9835-4D33-AED2-6E6677D905FF}|dosimetro_iec_61252\\dosimetro_iec_61252.csproj|c:\\users\\daniel\\documents\\projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\form7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7855AD1-9835-4D33-AED2-6E6677D905FF}|dosimetro_iec_61252\\dosimetro_iec_61252.csproj|solutionrelative:dosimetro_iec_61252\\form7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A7855AD1-9835-4D33-AED2-6E6677D905FF}|dosimetro_iec_61252\\dosimetro_iec_61252.csproj|c:\\users\\daniel\\documents\\projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\form6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7855AD1-9835-4D33-AED2-6E6677D905FF}|dosimetro_iec_61252\\dosimetro_iec_61252.csproj|solutionrelative:dosimetro_iec_61252\\form6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A7855AD1-9835-4D33-AED2-6E6677D905FF}|dosimetro_iec_61252\\dosimetro_iec_61252.csproj|c:\\users\\daniel\\documents\\projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\form7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A7855AD1-9835-4D33-AED2-6E6677D905FF}|dosimetro_iec_61252\\dosimetro_iec_61252.csproj|solutionrelative:dosimetro_iec_61252\\form7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A7855AD1-9835-4D33-AED2-6E6677D905FF}|dosimetro_iec_61252\\dosimetro_iec_61252.csproj|c:\\users\\daniel\\documents\\projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\form5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A7855AD1-9835-4D33-AED2-6E6677D905FF}|dosimetro_iec_61252\\dosimetro_iec_61252.csproj|solutionrelative:dosimetro_iec_61252\\form5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A7855AD1-9835-4D33-AED2-6E6677D905FF}|dosimetro_iec_61252\\dosimetro_iec_61252.csproj|c:\\users\\daniel\\documents\\projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\form6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{A7855AD1-9835-4D33-AED2-6E6677D905FF}|dosimetro_iec_61252\\dosimetro_iec_61252.csproj|solutionrelative:dosimetro_iec_61252\\form6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A7855AD1-9835-4D33-AED2-6E6677D905FF}|dosimetro_iec_61252\\dosimetro_iec_61252.csproj|c:\\users\\daniel\\documents\\projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\form6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A7855AD1-9835-4D33-AED2-6E6677D905FF}|dosimetro_iec_61252\\dosimetro_iec_61252.csproj|solutionrelative:dosimetro_iec_61252\\form6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,40 +27,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Form7.cs",
-              "DocumentMoniker": "C:\\Users\\Daniel\\Documents\\Projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\Form7.cs",
-              "RelativeDocumentMoniker": "dosimetro_iec_61252\\Form7.cs",
-              "ToolTip": "C:\\Users\\Daniel\\Documents\\Projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\Form7.cs",
-              "RelativeToolTip": "dosimetro_iec_61252\\Form7.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAIAzwBoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T14:26:12.438Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "Form6.cs",
               "DocumentMoniker": "C:\\Users\\Daniel\\Documents\\Projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\Form6.cs",
               "RelativeDocumentMoniker": "dosimetro_iec_61252\\Form6.cs",
               "ToolTip": "C:\\Users\\Daniel\\Documents\\Projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\Form6.cs",
               "RelativeToolTip": "dosimetro_iec_61252\\Form6.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAMwBoAAAAAAAAA",
+              "ViewState": "AQIAAH0AAAAAAAAAAAA3wIwAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T14:20:55.355Z",
+              "WhenOpened": "2024-06-07T13:53:21.745Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form7.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\Daniel\\Documents\\Projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\Form7.cs",
-              "RelativeDocumentMoniker": "dosimetro_iec_61252\\Form7.cs",
-              "ToolTip": "C:\\Users\\Daniel\\Documents\\Projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\Form7.cs [Projeto]",
-              "RelativeToolTip": "dosimetro_iec_61252\\Form7.cs [Projeto]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T14:15:41.486Z",
-              "EditorCaption": " [Projeto]"
             },
             {
               "$type": "Document",
@@ -75,8 +46,21 @@
               "ToolTip": "C:\\Users\\Daniel\\Documents\\Projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\Form6.cs [Projeto]",
               "RelativeToolTip": "dosimetro_iec_61252\\Form6.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-23T14:11:42.803Z",
+              "WhenOpened": "2024-06-07T13:52:59.422Z",
               "EditorCaption": " [Projeto]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form5.cs",
+              "DocumentMoniker": "C:\\Users\\Daniel\\Documents\\Projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\Form5.cs",
+              "RelativeDocumentMoniker": "dosimetro_iec_61252\\Form5.cs",
+              "ToolTip": "C:\\Users\\Daniel\\Documents\\Projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\Form5.cs",
+              "RelativeToolTip": "dosimetro_iec_61252\\Form5.cs",
+              "ViewState": "AQIAAIYAAAAAAAAAAAAkwJUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T13:44:10.733Z",
+              "EditorCaption": ""
             }
           ]
         }

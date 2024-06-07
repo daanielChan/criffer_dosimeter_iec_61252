@@ -15,25 +15,32 @@ namespace dosimetro_iec_61252
 
         private Form1 _form1;
         private screens_manager _screen_manager;
-        string[] ref_values_0 = { "63,10 Hz", "125,89 Hz", "251,19 Hz", "501,19 Hz", "1000,00 Hz", "1995,26 Hz", "3981,07 Hz", "7943,28 Hz" };
-        string[] ref_values = new string[8];
-        bool _start_consider_change_event = false;
-        int _conf_value = 0;
+        string[] ref_values = new string[10];
 
         public Form3(Form1 form, screens_manager screen_manager)
         {
             _form1 = form;
             _screen_manager = screen_manager;
             InitializeComponent();
+            tbxAmplAdjust.Enabled = false;
 
-            ref_values = ref_values_0;
+            if (!_screen_manager.have_sheet_configured())
+            {
+                MessageBox.Show("Você precisa selecionar um arquivo Excel para o correto funcionamento do Software.", "Atenção!");
+                return;
+            }
+            txbVpp.Text = _screen_manager._resp_screen.get_vpp();
+            lblRef.Text = _screen_manager._resp_screen.get_ref_val();
 
-            for (int i = 0; i < 8; i++)
+
+            _screen_manager._resp_screen.update_reference_values(ref_values);
+
+            for (int i = 0; i < 9; i++)
             {
                 dataGridView1.Rows.Add();
             }
 
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 9; i++)
             {
                 dataGridView1.Rows[i].Cells[0].Value = ref_values[i];
             }
@@ -41,50 +48,36 @@ namespace dosimetro_iec_61252
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
 
-            screen_manager._resp_screen.update_reference_values(ref_values);
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.DrawMode = DrawMode.OwnerDrawFixed;
 
-            _start_consider_change_event = true;
-
-            if (!_screen_manager.have_sheet_configured())
+            for (int i = 0; i < dataGridView1.RowCount; i++)
             {
-                MessageBox.Show("Você precisa selecionar um arquivo Excel para o correto funcionamento do Software.", "Atenção!");
+                comboBox1.Items.Add(ref_values[i]);
             }
+
+            comboBox1.SelectedIndex = 0;
+
+            comboBox1.DrawItem += (sender, e) =>
+            {
+                if (e.Index < 0)
+                    return;
+
+                e.DrawBackground();
+                string text = comboBox1.Items[e.Index].ToString();
+                using (StringFormat sf = new StringFormat())
+                {
+                    sf.LineAlignment = StringAlignment.Center;
+                    sf.Alignment = StringAlignment.Center;
+                    e.Graphics.DrawString(text, e.Font, Brushes.Black, e.Bounds, sf);
+                }
+            };
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             _form1.Show();
             this.Hide(); // Esconde o formulário principal
-        }
-
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (_start_consider_change_event == true)
-            {
-                int lastIndex = dataGridView1.Rows.Count - 1;
-
-                _conf_value++;
-                if (lastIndex < _conf_value)
-                {
-                    _conf_value = 0;
-                    lblConfVal.Text = ref_values[_conf_value];
-                }
-                else
-                {
-                    lblConfVal.Text = ref_values[_conf_value];
-                }
-            }
-        }
-
-        private void tbxVpp_TextChanged(object sender, EventArgs e)
-        {
-            if (tbxVpp.Text.Length > 0)
-            {
-                string temp_val = lblRef.Text + " dB" + " / " + tbxVpp.Text + " Vpp";
-                lblLevelRef.Text = temp_val;
-
-                _screen_manager._resp_screen.update_vpp_level(tbxVpp.Text);
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -107,8 +100,20 @@ namespace dosimetro_iec_61252
                     _vals_matrix[i][j] = string_value;
                 }
             }
+            _screen_manager._resp_screen.update_vpp(txbVpp.Text);
             _screen_manager._resp_screen.public_update_mesaure_value(_vals_matrix, num_rows, num_cols);
-            
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == false)
+            {
+                tbxAmplAdjust.Enabled = false;
+            }
+            else
+            {
+                tbxAmplAdjust.Enabled = true;
+            }
         }
     }
 }
