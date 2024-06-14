@@ -194,5 +194,45 @@ namespace dosimetro_iec_61252
             tela8.Show();
             this.Hide(); // Esconde o formulário principal
         }
+
+        int cont = 0;
+        private void btnTestGenerator_Click(object sender, EventArgs e)
+        {
+
+            screen_manager._serial.send_data("AMPL0.1VP");
+
+            /*if (cont == 0)
+            {
+                cont++;
+            }
+            else if (cont == 1)
+            {
+                screen_manager._serial.send_data("FUNC0");
+                cont = 0;
+            }*/
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            screen_manager._serial.door = comboBox1.Text;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string[] ports = null;
+
+            screen_manager._serial.get_available_coms(ref ports);
+
+            comboBox1.Items.Clear();
+            if (ports != null)
+            {
+                comboBox1.Items.AddRange(ports);
+                if (comboBox1.Items.Count > 0)
+                {
+                    comboBox1.SelectedIndex = 0; // Seleciona a primeira porta por padrão
+                }
+            }
+        }
     }
 }

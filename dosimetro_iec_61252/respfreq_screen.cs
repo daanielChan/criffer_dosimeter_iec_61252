@@ -14,7 +14,7 @@ namespace dosimetro_iec_61252
 
         public string _sheet_name;
         public string _sheet_path;
-
+        public string[] freq_name = new string[150];
         private const string sheet_name_internal = "Curva A";
 
         public respfreq_screen()
@@ -32,9 +32,10 @@ namespace dosimetro_iec_61252
 
             ex_file.init(_sheet_path, _sheet_name);
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 8; i++)
             {
-                _tab_meas[i] = ex_file.read_cell(sheet_name_internal, 20 + i, 1);
+                _tab_meas[i] = ex_file.read_cell(sheet_name_internal, 21 + i, 1);
+                freq_name[i] = _tab_meas[i];
             }
 
             ex_file.close();
@@ -48,7 +49,7 @@ namespace dosimetro_iec_61252
             {
                 for (int i = 0; i < rows; i++)
                 {
-                    ex_file.write_cell(sheet_name_internal, 7 + i, 2 + j, value[i][j], false);
+                    ex_file.write_cell(sheet_name_internal, 7 + i, 1 + j, value[i][j], false);
                 }
             }
             ex_file.save();

@@ -29,7 +29,7 @@ namespace dosimetro_iec_61252
                 MessageBox.Show("Você precisa selecionar um arquivo Excel para o correto funcionamento do Software.", "Atenção!");
                 return;
             }
-            txbVpp.Text = _screen_manager._fastpulses.get_vpp();
+            lblVpp.Text = _screen_manager._fastpulses.get_vpp();
 
             _screen_manager._fastpulses.update_values_exposition();
 
@@ -96,7 +96,6 @@ namespace dosimetro_iec_61252
                 }
             }
 
-            _screen_manager._fastpulses.update_vpp(txbVpp.Text);
             _screen_manager._fastpulses.public_update_mesaure_value(_vals_matrix, num_rows, num_cols);
         }
 

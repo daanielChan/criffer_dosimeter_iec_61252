@@ -40,7 +40,9 @@
             btnExcelToProgram = new Button();
             tableLayoutPanel18 = new TableLayoutPanel();
             tableLayoutPanel19 = new TableLayoutPanel();
+            tableLayoutPanel23 = new TableLayoutPanel();
             btnTestGenerator = new Button();
+            btnUpdate = new Button();
             tableLayoutPanel20 = new TableLayoutPanel();
             label11 = new Label();
             comboBox1 = new ComboBox();
@@ -106,6 +108,7 @@
             tableLayoutPanel27.SuspendLayout();
             tableLayoutPanel18.SuspendLayout();
             tableLayoutPanel19.SuspendLayout();
+            tableLayoutPanel23.SuspendLayout();
             tableLayoutPanel20.SuspendLayout();
             tableLayoutPanel16.SuspendLayout();
             tableLayoutPanel17.SuspendLayout();
@@ -335,9 +338,9 @@
             // 
             tableLayoutPanel19.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             tableLayoutPanel19.ColumnCount = 2;
-            tableLayoutPanel19.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 67.34694F));
-            tableLayoutPanel19.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32.65306F));
-            tableLayoutPanel19.Controls.Add(btnTestGenerator, 1, 0);
+            tableLayoutPanel19.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 51.44033F));
+            tableLayoutPanel19.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 48.55967F));
+            tableLayoutPanel19.Controls.Add(tableLayoutPanel23, 0, 0);
             tableLayoutPanel19.Controls.Add(tableLayoutPanel20, 0, 0);
             tableLayoutPanel19.Dock = DockStyle.Fill;
             tableLayoutPanel19.Location = new Point(4, 44);
@@ -348,19 +351,48 @@
             tableLayoutPanel19.Size = new Size(244, 54);
             tableLayoutPanel19.TabIndex = 2;
             // 
+            // tableLayoutPanel23
+            // 
+            tableLayoutPanel23.ColumnCount = 2;
+            tableLayoutPanel23.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel23.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel23.Controls.Add(btnTestGenerator, 0, 0);
+            tableLayoutPanel23.Controls.Add(btnUpdate, 1, 0);
+            tableLayoutPanel23.Dock = DockStyle.Fill;
+            tableLayoutPanel23.Location = new Point(128, 4);
+            tableLayoutPanel23.Name = "tableLayoutPanel23";
+            tableLayoutPanel23.RowCount = 1;
+            tableLayoutPanel23.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel23.Size = new Size(112, 46);
+            tableLayoutPanel23.TabIndex = 16;
+            // 
             // btnTestGenerator
             // 
             btnTestGenerator.BackColor = SystemColors.Highlight;
             btnTestGenerator.BackgroundImageLayout = ImageLayout.Zoom;
             btnTestGenerator.Dock = DockStyle.Fill;
-            btnTestGenerator.Enabled = false;
             btnTestGenerator.FlatStyle = FlatStyle.Flat;
-            btnTestGenerator.Location = new Point(167, 4);
+            btnTestGenerator.Location = new Point(3, 3);
             btnTestGenerator.Name = "btnTestGenerator";
-            btnTestGenerator.Size = new Size(73, 46);
+            btnTestGenerator.Size = new Size(50, 40);
             btnTestGenerator.TabIndex = 5;
             btnTestGenerator.Text = "Testar";
             btnTestGenerator.UseVisualStyleBackColor = false;
+            btnTestGenerator.Click += btnTestGenerator_Click;
+            // 
+            // btnUpdate
+            // 
+            btnUpdate.BackColor = SystemColors.Highlight;
+            btnUpdate.BackgroundImageLayout = ImageLayout.Zoom;
+            btnUpdate.Dock = DockStyle.Fill;
+            btnUpdate.FlatStyle = FlatStyle.Flat;
+            btnUpdate.Location = new Point(59, 3);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(50, 40);
+            btnUpdate.TabIndex = 6;
+            btnUpdate.Text = "Atualizar COM";
+            btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // tableLayoutPanel20
             // 
@@ -374,7 +406,7 @@
             tableLayoutPanel20.RowCount = 2;
             tableLayoutPanel20.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
             tableLayoutPanel20.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
-            tableLayoutPanel20.Size = new Size(156, 46);
+            tableLayoutPanel20.Size = new Size(117, 46);
             tableLayoutPanel20.TabIndex = 6;
             // 
             // label11
@@ -382,7 +414,7 @@
             label11.Anchor = AnchorStyles.None;
             label11.AutoSize = true;
             label11.Font = new Font("Arial", 12F);
-            label11.Location = new Point(34, 0);
+            label11.Location = new Point(15, 0);
             label11.Name = "label11";
             label11.Size = new Size(87, 18);
             label11.TabIndex = 1;
@@ -396,8 +428,9 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(3, 21);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(150, 26);
+            comboBox1.Size = new Size(111, 26);
             comboBox1.TabIndex = 2;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label12
             // 
@@ -1186,6 +1219,7 @@
             tableLayoutPanel18.ResumeLayout(false);
             tableLayoutPanel18.PerformLayout();
             tableLayoutPanel19.ResumeLayout(false);
+            tableLayoutPanel23.ResumeLayout(false);
             tableLayoutPanel20.ResumeLayout(false);
             tableLayoutPanel20.PerformLayout();
             tableLayoutPanel16.ResumeLayout(false);
@@ -1302,5 +1336,7 @@
         private Button btnTestGenerator;
         private TableLayoutPanel tableLayoutPanel20;
         private ComboBox comboBox1;
+        private TableLayoutPanel tableLayoutPanel23;
+        private Button btnUpdate;
     }
 }

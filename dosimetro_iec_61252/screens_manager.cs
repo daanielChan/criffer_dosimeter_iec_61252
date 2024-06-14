@@ -52,12 +52,20 @@ namespace dosimetro_iec_61252
 
         public bool have_sheet_configured ()
         {
-            if (_sheet_name == string.Empty || _sheet_path == string.Empty)
+            if (_sheet_name == string.Empty || _sheet_path == string.Empty || _init_screen._down_lim_db == string.Empty)
             {
                 return false;
             } else {
                 return true;
             }
+        }
+
+        public double calculate_new_vpp(double reference, double change)
+        {
+            double exponent = change / 20.0;
+            double powerOfTen = Math.Pow(10, exponent);
+            double result = reference * powerOfTen;
+            return result;
         }
     }
 }

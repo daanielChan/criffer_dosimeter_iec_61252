@@ -60,7 +60,6 @@
             label4 = new Label();
             lblSigLvl = new Label();
             tableLayoutPanel8 = new TableLayoutPanel();
-            txbVpp = new TextBox();
             label5 = new Label();
             tableLayoutPanel7 = new TableLayoutPanel();
             tbxAdjust = new TextBox();
@@ -71,6 +70,7 @@
             checkBox1 = new CheckBox();
             label7 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
+            lblVpp = new Label();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel21.SuspendLayout();
             tableLayoutPanel26.SuspendLayout();
@@ -431,7 +431,7 @@
             tableLayoutPanel8.ColumnCount = 2;
             tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
             tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
-            tableLayoutPanel8.Controls.Add(txbVpp, 0, 0);
+            tableLayoutPanel8.Controls.Add(lblVpp, 0, 0);
             tableLayoutPanel8.Controls.Add(label5, 0, 0);
             tableLayoutPanel8.Dock = DockStyle.Fill;
             tableLayoutPanel8.Location = new Point(3, 135);
@@ -440,15 +440,6 @@
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel8.Size = new Size(185, 60);
             tableLayoutPanel8.TabIndex = 1;
-            // 
-            // txbVpp
-            // 
-            txbVpp.Anchor = AnchorStyles.Left;
-            txbVpp.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbVpp.Location = new Point(114, 15);
-            txbVpp.Name = "txbVpp";
-            txbVpp.Size = new Size(68, 29);
-            txbVpp.TabIndex = 15;
             // 
             // label5
             // 
@@ -567,6 +558,19 @@
             // timer1
             // 
             timer1.Interval = 1000;
+            timer1.Tick += Timer_Tick;
+            // 
+            // lblVpp
+            // 
+            lblVpp.Anchor = AnchorStyles.Left;
+            lblVpp.AutoSize = true;
+            lblVpp.Font = new Font("Arial", 13F);
+            lblVpp.Location = new Point(114, 9);
+            lblVpp.Name = "lblVpp";
+            lblVpp.Size = new Size(67, 42);
+            lblVpp.TabIndex = 5;
+            lblVpp.Text = "Aguardando..";
+            lblVpp.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Form6
             // 
@@ -632,8 +636,8 @@
         private DataGridViewTextBoxColumn Med1;
         private DataGridViewTextBoxColumn Med2;
         private DataGridViewTextBoxColumn Med3;
-        private TextBox txbVpp;
         private TextBox tbxAdjust;
         private System.Windows.Forms.Timer timer1;
+        private Label lblVpp;
     }
 }

@@ -18,7 +18,8 @@ namespace dosimetro_iec_61252
         
         private const string sheet_name_internal = "Lin";
         public string[] composed_vpp_dbname = new string [10];
-        string[] db_name = new string[10];
+        public string[] db_name = new string[10];
+        public string[] reference_arr = new string[6] { "130", "120", "110", "100", "90", "80" };
 
         public linear_screen()
         {
@@ -39,9 +40,12 @@ namespace dosimetro_iec_61252
             for (int i = 0; i < 9; i++)
             {
                 _tab_meas [i] = ex_file.read_cell(sheet_name_internal, 7 + i, 1);
-                db_name[i] = _tab_meas[i];
+                if (_tab_meas[i] == null)
+                {
+                    _tab_meas[i] = reference_arr [i];
+                }
 
-                composed_vpp_dbname[i] = db_name[i] + " / X,XXX Vpp";
+                db_name[i] = _tab_meas[i];
             }
 
 
@@ -56,7 +60,7 @@ namespace dosimetro_iec_61252
             {
                 for (int i = 0; i < rows; i++)
                 {
-                    ex_file.write_cell(sheet_name_internal, 7 + i, 2 + j, value[i][j], false);
+                    ex_file.write_cell(sheet_name_internal, 7 + i, 1 + j, value[i][j], false);
                 }
             }
             ex_file.save();

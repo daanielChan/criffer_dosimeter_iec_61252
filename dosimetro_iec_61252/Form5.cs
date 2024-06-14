@@ -31,7 +31,7 @@ namespace dosimetro_iec_61252
                 return;
             }
 
-            txbVpp.Text = _screen_manager._fastpulses.get_vpp();
+            lblVpp.Text = _screen_manager._fastpulses.get_vpp();
             _screen_manager._fastpulses.update_values_exposition();
 
             for (int i = 0; i < 4; i++)
@@ -81,8 +81,8 @@ namespace dosimetro_iec_61252
             int minutes = ts.Minutes;
             int seconds = ts.Seconds;
 
-            label7.Text = hours + ":" + minutes + ":" + seconds;
             timeRemaining = new TimeSpan(hours, minutes, seconds);
+            label7.Text = timeRemaining.ToString(@"hh\:mm\:ss");
 
         }
 
@@ -113,7 +113,6 @@ namespace dosimetro_iec_61252
                 }
 
             }
-            _screen_manager._fastpulses.update_vpp(txbVpp.Text);
             _screen_manager._fastpulses.public_update_mesaure_value(_vals_matrix, num_rows, num_cols);
         }
 
@@ -154,8 +153,8 @@ namespace dosimetro_iec_61252
             int minutes = ts.Minutes;
             int seconds = ts.Seconds;
 
-            label7.Text = hours + ":" + minutes + ":" + seconds;
             timeRemaining = new TimeSpan(hours, minutes, seconds);
+            label7.Text = timeRemaining.ToString(@"hh\:mm\:ss");
 
             timer1.Start();
         }
@@ -170,8 +169,10 @@ namespace dosimetro_iec_61252
             int minutes = ts.Minutes;
             int seconds = ts.Seconds;
 
-            label7.Text = hours + ":" + minutes + ":" + seconds;
+
             timeRemaining = new TimeSpan(hours, minutes, seconds);
+            label7.Text = timeRemaining.ToString(@"hh\:mm\:ss");
+
         }
     }
 }

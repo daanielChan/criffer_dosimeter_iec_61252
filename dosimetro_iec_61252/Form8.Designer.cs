@@ -57,7 +57,7 @@
             label3 = new Label();
             label6 = new Label();
             tbxAdjust = new TextBox();
-            txbVpp = new TextBox();
+            lblVpp = new Label();
             cbxAmpAdj = new CheckBox();
             tableLayoutPanel7 = new TableLayoutPanel();
             tableLayoutPanel11 = new TableLayoutPanel();
@@ -377,7 +377,7 @@
             tableLayoutPanel8.Controls.Add(label3, 0, 1);
             tableLayoutPanel8.Controls.Add(label6, 0, 2);
             tableLayoutPanel8.Controls.Add(tbxAdjust, 1, 1);
-            tableLayoutPanel8.Controls.Add(txbVpp, 1, 3);
+            tableLayoutPanel8.Controls.Add(lblVpp, 1, 3);
             tableLayoutPanel8.Dock = DockStyle.Fill;
             tableLayoutPanel8.Location = new Point(167, 3);
             tableLayoutPanel8.Name = "tableLayoutPanel8";
@@ -459,14 +459,17 @@
             tbxAdjust.Size = new Size(68, 29);
             tbxAdjust.TabIndex = 17;
             // 
-            // txbVpp
+            // lblVpp
             // 
-            txbVpp.Anchor = AnchorStyles.Left;
-            txbVpp.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbVpp.Location = new Point(109, 153);
-            txbVpp.Name = "txbVpp";
-            txbVpp.Size = new Size(68, 29);
-            txbVpp.TabIndex = 18;
+            lblVpp.Anchor = AnchorStyles.Left;
+            lblVpp.AutoSize = true;
+            lblVpp.Font = new Font("Arial", 13F);
+            lblVpp.Location = new Point(109, 147);
+            lblVpp.Name = "lblVpp";
+            lblVpp.Size = new Size(97, 42);
+            lblVpp.TabIndex = 18;
+            lblVpp.Text = "Aguardando..";
+            lblVpp.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // cbxAmpAdj
             // 
@@ -720,6 +723,6 @@
         private Label label6;
         private Label label5;
         private TextBox tbxAdjust;
-        private TextBox txbVpp;
+        private Label lblVpp;
     }
 }

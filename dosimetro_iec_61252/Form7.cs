@@ -28,7 +28,7 @@ namespace dosimetro_iec_61252
                 return;
             }
 
-            txbVpp.Text = _screen_manager._unipolarpulses.get_vpp();
+            lblVpp.Text = _screen_manager._unipolarpulses.get_vpp();
             _screen_manager._unipolarpulses.update_values();
 
             for (int i = 0; i < 2; i++)
@@ -95,7 +95,6 @@ namespace dosimetro_iec_61252
                     _vals_matrix[i][j] = string_value;
                 }
             }
-            _screen_manager._unipolarpulses.update_vpp(txbVpp.Text);
             _screen_manager._unipolarpulses.exp_public_update_mesaure_value(_vals_matrix, num_rows, num_cols);
         }
 

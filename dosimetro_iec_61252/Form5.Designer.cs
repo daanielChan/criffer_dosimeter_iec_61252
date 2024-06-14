@@ -60,7 +60,7 @@
             label4 = new Label();
             lblSigLvl = new Label();
             tableLayoutPanel8 = new TableLayoutPanel();
-            txbVpp = new TextBox();
+            lblVpp = new Label();
             label5 = new Label();
             tableLayoutPanel7 = new TableLayoutPanel();
             tbxAdjust = new TextBox();
@@ -469,7 +469,7 @@
             tableLayoutPanel8.ColumnCount = 2;
             tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
             tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
-            tableLayoutPanel8.Controls.Add(txbVpp, 0, 0);
+            tableLayoutPanel8.Controls.Add(lblVpp, 0, 0);
             tableLayoutPanel8.Controls.Add(label5, 0, 0);
             tableLayoutPanel8.Dock = DockStyle.Fill;
             tableLayoutPanel8.Location = new Point(3, 89);
@@ -479,14 +479,17 @@
             tableLayoutPanel8.Size = new Size(185, 37);
             tableLayoutPanel8.TabIndex = 1;
             // 
-            // txbVpp
+            // lblVpp
             // 
-            txbVpp.Anchor = AnchorStyles.Left;
-            txbVpp.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbVpp.Location = new Point(114, 4);
-            txbVpp.Name = "txbVpp";
-            txbVpp.Size = new Size(68, 29);
-            txbVpp.TabIndex = 14;
+            lblVpp.Anchor = AnchorStyles.Left;
+            lblVpp.AutoSize = true;
+            lblVpp.Font = new Font("Arial", 13F);
+            lblVpp.Location = new Point(114, 0);
+            lblVpp.Name = "lblVpp";
+            lblVpp.Size = new Size(67, 37);
+            lblVpp.TabIndex = 5;
+            lblVpp.Text = "Aguardando..";
+            lblVpp.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label5
             // 
@@ -691,7 +694,7 @@
         private DataGridViewTextBoxColumn Med1;
         private DataGridViewTextBoxColumn Med2;
         private DataGridViewTextBoxColumn Med3;
-        private TextBox txbVpp;
         private TextBox tbxAdjust;
+        private Label lblVpp;
     }
 }

@@ -53,7 +53,7 @@
             label1 = new Label();
             label3 = new Label();
             lblRef = new Label();
-            txbVpp = new TextBox();
+            lblVpp = new Label();
             tableLayoutPanel3 = new TableLayoutPanel();
             dataGridView1 = new DataGridView();
             ValuesColumn = new DataGridViewTextBoxColumn();
@@ -231,7 +231,7 @@
             tableLayoutPanel2.Controls.Add(label1, 0, 1);
             tableLayoutPanel2.Controls.Add(label3, 0, 3);
             tableLayoutPanel2.Controls.Add(lblRef, 1, 2);
-            tableLayoutPanel2.Controls.Add(txbVpp, 1, 3);
+            tableLayoutPanel2.Controls.Add(lblVpp, 1, 3);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(267, 89);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -293,6 +293,9 @@
             tbxAmplAdjust.Name = "tbxAmplAdjust";
             tbxAmplAdjust.Size = new Size(88, 29);
             tbxAmplAdjust.TabIndex = 0;
+            tbxAmplAdjust.Text = "0,00";
+            tbxAmplAdjust.TextChanged += tbxAmplAdjust_TextChanged;
+            tbxAmplAdjust.KeyDown += tbxAmplAdjust_KeyDown;
             // 
             // tableLayoutPanel7
             // 
@@ -344,7 +347,7 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(216, 27);
             comboBox1.TabIndex = 10;
-            comboBox1.Text = "115,122 \\ 0,1234 vpp";
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -379,14 +382,17 @@
             lblRef.TabIndex = 8;
             lblRef.Text = "Aguardando..";
             // 
-            // txbVpp
+            // lblVpp
             // 
-            txbVpp.Anchor = AnchorStyles.Left;
-            txbVpp.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbVpp.Location = new Point(163, 280);
-            txbVpp.Name = "txbVpp";
-            txbVpp.Size = new Size(88, 29);
-            txbVpp.TabIndex = 13;
+            lblVpp.Anchor = AnchorStyles.Left;
+            lblVpp.AutoSize = true;
+            lblVpp.Font = new Font("Arial", 15F);
+            lblVpp.Location = new Point(163, 283);
+            lblVpp.Name = "lblVpp";
+            lblVpp.Size = new Size(128, 23);
+            lblVpp.TabIndex = 13;
+            lblVpp.Text = "Aguardando..";
+            lblVpp.TextChanged += lblVpp_TextChanged;
             // 
             // tableLayoutPanel3
             // 
@@ -527,6 +533,6 @@
         private TableLayoutPanel tableLayoutPanel4;
         private TableLayoutPanel tableLayoutPanel7;
         private TableLayoutPanel tableLayoutPanel8;
-        private TextBox txbVpp;
+        private Label lblVpp;
     }
 }

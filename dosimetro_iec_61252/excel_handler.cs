@@ -39,6 +39,11 @@ namespace dosimetro_iec_61252
             }
 
             ExcelWorksheet worksheet = _package.Workbook.Worksheets[sheet_name];
+            if (worksheet == null)
+            {
+                return "";
+            }
+
             return worksheet.Cells[row, column].Value?.ToString();
         }
 
@@ -65,7 +70,6 @@ namespace dosimetro_iec_61252
 
                     if (cont == 0)
                     {
-                        // Exceção de arquivo aberto
                         MessageBox.Show("Feche o arquivo Excel antes de salvá-lo.", "Erro ao salvar", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         cont++;
                     }
