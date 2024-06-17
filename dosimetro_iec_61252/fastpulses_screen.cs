@@ -89,7 +89,7 @@ namespace dosimetro_iec_61252
             {
                 for (int i = 0; i < rows; i++)
                 {
-                    ex_file.write_cell(sheet_name_internal, 7 + i, 2 + j, value[i][j], false);
+                    ex_file.write_cell(sheet_name_internal, 7 + i, 6 + j, value[i][j], false);
                 }
             }
             ex_file.save();
