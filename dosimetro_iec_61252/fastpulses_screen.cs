@@ -16,14 +16,17 @@ namespace dosimetro_iec_61252
 
         const int table_size = 4;
 
-        string[] ref_values      = new string[table_size];
-        string[] duration        = new string[table_size];
-        string[] proportion      = new string[table_size];
-        string[] pulse_level     = new string[table_size];
-        public string[] time     = new string[table_size];
-        string[] calculated_result = new string[table_size];
+        public string[] time        = new string[table_size];
+        public string[] duration    = new string[table_size];
+        public string[] ref_values  = new string[table_size];
+        public string[] proportion  = new string[table_size];
+        public string[] pulse_level = new string[table_size];
+        
+        public string[] calculated_result = new string[table_size];
 
         public string[] composed_process_name = new string[table_size];
+
+        public string db_ref;
 
         private const string sheet_name_internal = "RSCD";
        
@@ -42,6 +45,8 @@ namespace dosimetro_iec_61252
             }
 
             ex_file.init(_sheet_path, _sheet_name);
+
+            db_ref = ex_file.read_cell(sheet_name_internal, 3, 2);
 
             for (int i = 0; i < table_size; i++)
             {
@@ -64,6 +69,8 @@ namespace dosimetro_iec_61252
             }
 
             ex_file.init(_sheet_path, _sheet_name);
+
+            db_ref = ex_file.read_cell(sheet_name_internal, 3, 2);
 
             for (int i = 0; i < table_size; i++)
             {
@@ -90,6 +97,21 @@ namespace dosimetro_iec_61252
                 for (int i = 0; i < rows; i++)
                 {
                     ex_file.write_cell(sheet_name_internal, 7 + i, 6 + j, value[i][j], false);
+                }
+            }
+            ex_file.save();
+            ex_file.close();
+        }
+
+        public void laeq_update_mesaure_value(string[][] value, int rows, int cols)
+        {
+            ex_file.init(_sheet_path, _sheet_name);
+
+            for (int j = 0; j < cols; j++)
+            {
+                for (int i = 0; i < rows; i++)
+                {
+                    ex_file.write_cell(sheet_name_internal, 15 + i, 6 + j, value[i][j], false);
                 }
             }
             ex_file.save();

@@ -165,6 +165,7 @@ namespace dosimetro_iec_61252
                 e.Handled = true;
             }
         }
+
         private void AdjustNumber(int direction)
         {
             int cursor_pos = tbxAmplAdjust.SelectionStart;

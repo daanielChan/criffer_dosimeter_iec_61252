@@ -14,6 +14,9 @@ namespace dosimetro_iec_61252
             screen_manager._serial.get_available_coms(ref ports);
 
             comboBox1.Items.Clear();
+
+            comboBox1.Items.Add("Selecione a Porta!");
+
             if (ports != null)
             {
                 comboBox1.Items.AddRange(ports);
@@ -215,7 +218,10 @@ namespace dosimetro_iec_61252
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            screen_manager._serial.door = comboBox1.Text;
+            if (comboBox1.SelectedIndex != 0)
+            {
+                screen_manager._serial.door = comboBox1.Text;
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

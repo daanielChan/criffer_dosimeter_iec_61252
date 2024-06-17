@@ -90,6 +90,7 @@
             lblFilePathAndName = new Label();
             btnFileSelect = new Button();
             FileSelectFix = new Label();
+            label13 = new Label();
             tableLayoutPanel4 = new TableLayoutPanel();
             label1 = new Label();
             label2 = new Label();
@@ -164,6 +165,7 @@
             tableLayoutPanel1.Controls.Add(tableLayoutPanel10, 1, 0);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel11, 0, 4);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel13, 0, 1);
+            tableLayoutPanel1.Controls.Add(label13, 2, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Margin = new Padding(0);
@@ -860,6 +862,7 @@
             button5.BackColor = SystemColors.MenuHighlight;
             button5.BackgroundImageLayout = ImageLayout.Zoom;
             button5.Dock = DockStyle.Fill;
+            button5.Enabled = false;
             button5.FlatStyle = FlatStyle.Flat;
             button5.Location = new Point(87, 4);
             button5.Name = "button5";
@@ -1054,6 +1057,19 @@
             FileSelectFix.Text = "Arquivo Excel Base";
             FileSelectFix.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // label13
+            // 
+            label13.Anchor = AnchorStyles.None;
+            label13.AutoSize = true;
+            label13.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label13.Location = new Point(524, 9);
+            label13.Name = "label13";
+            label13.Size = new Size(252, 90);
+            label13.TabIndex = 14;
+            label13.Text = "Para o correto funcionamento do Software: \r\n- selecione o arquivo excel.\r\n- clique no botão carregar do excel.\r\n- selecione a porta COM.";
+            label13.TextAlign = ContentAlignment.MiddleCenter;
+            label13.Visible = false;
+            // 
             // tableLayoutPanel4
             // 
             tableLayoutPanel4.ColumnCount = 1;
@@ -1213,6 +1229,7 @@
             Text = "Tela Inicial e de Configurações";
             WindowState = FormWindowState.Maximized;
             tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             tableLayoutPanel21.ResumeLayout(false);
             tableLayoutPanel24.ResumeLayout(false);
             tableLayoutPanel27.ResumeLayout(false);
@@ -1338,5 +1355,6 @@
         private ComboBox comboBox1;
         private TableLayoutPanel tableLayoutPanel23;
         private Button btnUpdate;
+        private Label label13;
     }
 }

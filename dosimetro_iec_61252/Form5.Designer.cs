@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel21 = new TableLayoutPanel();
             tableLayoutPanel26 = new TableLayoutPanel();
@@ -53,8 +53,11 @@
             label1 = new Label();
             comboBox1 = new ComboBox();
             tableLayoutPanel6 = new TableLayoutPanel();
+            tableLayoutPanel13 = new TableLayoutPanel();
+            lblContE4k = new Label();
+            button3 = new Button();
             tableLayoutPanel12 = new TableLayoutPanel();
-            lvlE4k = new Label();
+            lblE4k = new Label();
             label6 = new Label();
             tableLayoutPanel11 = new TableLayoutPanel();
             label4 = new Label();
@@ -67,11 +70,12 @@
             label3 = new Label();
             cbxAmpAdj = new CheckBox();
             cbxMeasE4k = new CheckBox();
-            checkBox1 = new CheckBox();
+            cbxCron = new CheckBox();
             label7 = new Label();
             tableLayoutPanel9 = new TableLayoutPanel();
             button2 = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
+            timer2 = new System.Windows.Forms.Timer(components);
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel21.SuspendLayout();
             tableLayoutPanel26.SuspendLayout();
@@ -82,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tableLayoutPanel4.SuspendLayout();
             tableLayoutPanel6.SuspendLayout();
+            tableLayoutPanel13.SuspendLayout();
             tableLayoutPanel12.SuspendLayout();
             tableLayoutPanel11.SuspendLayout();
             tableLayoutPanel8.SuspendLayout();
@@ -182,6 +187,7 @@
             button1.TabIndex = 12;
             button1.Text = "Salvar Excel";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
             // 
             // tableLayoutPanel10
             // 
@@ -254,43 +260,43 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Font = new Font("Arial", 12F);
-            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new Font("Arial", 12F);
+            dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             dataGridView1.BackgroundColor = Color.FromArgb(192, 192, 255);
             dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Arial", 12F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Arial", 12F);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ValuesColumn, Med1, Med2, Med3 });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Arial", 12F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Arial", 12F);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.GridColor = Color.DarkBlue;
             dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Arial", 12F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Control;
+            dataGridViewCellStyle9.Font = new Font("Arial", 12F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
             dataGridView1.Size = new Size(542, 85);
             dataGridView1.TabIndex = 16;
             // 
@@ -365,13 +371,14 @@
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35F));
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35F));
+            tableLayoutPanel6.Controls.Add(tableLayoutPanel13, 1, 2);
             tableLayoutPanel6.Controls.Add(tableLayoutPanel12, 0, 3);
             tableLayoutPanel6.Controls.Add(tableLayoutPanel11, 0, 1);
             tableLayoutPanel6.Controls.Add(tableLayoutPanel8, 0, 2);
             tableLayoutPanel6.Controls.Add(tableLayoutPanel7, 0, 0);
             tableLayoutPanel6.Controls.Add(cbxAmpAdj, 1, 0);
             tableLayoutPanel6.Controls.Add(cbxMeasE4k, 1, 3);
-            tableLayoutPanel6.Controls.Add(checkBox1, 2, 1);
+            tableLayoutPanel6.Controls.Add(cbxCron, 2, 1);
             tableLayoutPanel6.Controls.Add(label7, 2, 3);
             tableLayoutPanel6.Controls.Add(tableLayoutPanel9, 2, 2);
             tableLayoutPanel6.Dock = DockStyle.Fill;
@@ -386,12 +393,53 @@
             tableLayoutPanel6.Size = new Size(548, 175);
             tableLayoutPanel6.TabIndex = 1;
             // 
+            // tableLayoutPanel13
+            // 
+            tableLayoutPanel13.ColumnCount = 2;
+            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel13.Controls.Add(lblContE4k, 0, 0);
+            tableLayoutPanel13.Controls.Add(button3, 1, 0);
+            tableLayoutPanel13.Dock = DockStyle.Fill;
+            tableLayoutPanel13.Location = new Point(194, 89);
+            tableLayoutPanel13.Name = "tableLayoutPanel13";
+            tableLayoutPanel13.RowCount = 1;
+            tableLayoutPanel13.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel13.Size = new Size(158, 37);
+            tableLayoutPanel13.TabIndex = 15;
+            // 
+            // lblContE4k
+            // 
+            lblContE4k.Anchor = AnchorStyles.None;
+            lblContE4k.AutoSize = true;
+            lblContE4k.Font = new Font("Arial", 18F, FontStyle.Bold);
+            lblContE4k.Location = new Point(3, 0);
+            lblContE4k.Name = "lblContE4k";
+            lblContE4k.Size = new Size(72, 37);
+            lblContE4k.TabIndex = 14;
+            lblContE4k.Text = "00:00:00";
+            lblContE4k.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // button3
+            // 
+            button3.BackColor = SystemColors.MenuHighlight;
+            button3.BackgroundImageLayout = ImageLayout.Zoom;
+            button3.Dock = DockStyle.Fill;
+            button3.FlatStyle = FlatStyle.Flat;
+            button3.Location = new Point(82, 3);
+            button3.Name = "button3";
+            button3.Size = new Size(73, 31);
+            button3.TabIndex = 13;
+            button3.Text = "Iniciar Contagem - E4K";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
             // tableLayoutPanel12
             // 
             tableLayoutPanel12.ColumnCount = 2;
             tableLayoutPanel12.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
             tableLayoutPanel12.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
-            tableLayoutPanel12.Controls.Add(lvlE4k, 0, 0);
+            tableLayoutPanel12.Controls.Add(lblE4k, 0, 0);
             tableLayoutPanel12.Controls.Add(label6, 0, 0);
             tableLayoutPanel12.Dock = DockStyle.Fill;
             tableLayoutPanel12.Location = new Point(3, 132);
@@ -401,17 +449,17 @@
             tableLayoutPanel12.Size = new Size(185, 40);
             tableLayoutPanel12.TabIndex = 3;
             // 
-            // lvlE4k
+            // lblE4k
             // 
-            lvlE4k.Anchor = AnchorStyles.Left;
-            lvlE4k.AutoSize = true;
-            lvlE4k.Font = new Font("Arial", 13F);
-            lvlE4k.Location = new Point(114, 0);
-            lvlE4k.Name = "lvlE4k";
-            lvlE4k.Size = new Size(67, 40);
-            lvlE4k.TabIndex = 5;
-            lvlE4k.Text = "Aguardando..";
-            lvlE4k.TextAlign = ContentAlignment.MiddleCenter;
+            lblE4k.Anchor = AnchorStyles.Left;
+            lblE4k.AutoSize = true;
+            lblE4k.Font = new Font("Arial", 13F);
+            lblE4k.Location = new Point(114, 0);
+            lblE4k.Name = "lblE4k";
+            lblE4k.Size = new Size(67, 40);
+            lblE4k.TabIndex = 5;
+            lblE4k.Text = "Aguardando..";
+            lblE4k.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
@@ -490,6 +538,7 @@
             lblVpp.TabIndex = 5;
             lblVpp.Text = "Aguardando..";
             lblVpp.TextAlign = ContentAlignment.MiddleCenter;
+            lblVpp.TextChanged += lblVpp_TextChanged;
             // 
             // label5
             // 
@@ -526,6 +575,7 @@
             tbxAdjust.Name = "tbxAdjust";
             tbxAdjust.Size = new Size(68, 29);
             tbxAdjust.TabIndex = 14;
+            tbxAdjust.KeyDown += tbxAdjust_KeyDown;
             // 
             // label3
             // 
@@ -550,6 +600,7 @@
             cbxAmpAdj.TabIndex = 5;
             cbxAmpAdj.Text = "Ajustar Amplitude?";
             cbxAmpAdj.UseVisualStyleBackColor = true;
+            cbxAmpAdj.CheckedChanged += cbxAmpAdj_CheckedChanged;
             // 
             // cbxMeasE4k
             // 
@@ -562,18 +613,20 @@
             cbxMeasE4k.TabIndex = 6;
             cbxMeasE4k.Text = "Medir E4K?";
             cbxMeasE4k.UseVisualStyleBackColor = true;
+            cbxMeasE4k.CheckedChanged += cbxMeasE4k_CheckedChanged;
             // 
-            // checkBox1
+            // cbxCron
             // 
-            checkBox1.Anchor = AnchorStyles.None;
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Arial", 13F);
-            checkBox1.Location = new Point(358, 52);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(187, 25);
-            checkBox1.TabIndex = 7;
-            checkBox1.Text = "Utilizar Cronometro?";
-            checkBox1.UseVisualStyleBackColor = true;
+            cbxCron.Anchor = AnchorStyles.None;
+            cbxCron.AutoSize = true;
+            cbxCron.Font = new Font("Arial", 13F);
+            cbxCron.Location = new Point(358, 52);
+            cbxCron.Name = "cbxCron";
+            cbxCron.Size = new Size(187, 25);
+            cbxCron.TabIndex = 7;
+            cbxCron.Text = "Utilizar Cronômetro?";
+            cbxCron.UseVisualStyleBackColor = true;
+            cbxCron.CheckedChanged += cbxCron_CheckedChanged;
             // 
             // label7
             // 
@@ -621,6 +674,11 @@
             timer1.Interval = 1000;
             timer1.Tick += Timer_Tick;
             // 
+            // timer2
+            // 
+            timer2.Interval = 1000;
+            timer2.Tick += Timer2_Tick;
+            // 
             // Form5
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -644,6 +702,8 @@
             tableLayoutPanel4.PerformLayout();
             tableLayoutPanel6.ResumeLayout(false);
             tableLayoutPanel6.PerformLayout();
+            tableLayoutPanel13.ResumeLayout(false);
+            tableLayoutPanel13.PerformLayout();
             tableLayoutPanel12.ResumeLayout(false);
             tableLayoutPanel12.PerformLayout();
             tableLayoutPanel11.ResumeLayout(false);
@@ -672,7 +732,7 @@
         private Label label1;
         private TableLayoutPanel tableLayoutPanel6;
         private TableLayoutPanel tableLayoutPanel12;
-        private Label lvlE4k;
+        private Label lblE4k;
         private Label label6;
         private TableLayoutPanel tableLayoutPanel11;
         private Label label4;
@@ -684,7 +744,7 @@
         private CheckBox cbxAmpAdj;
         private CheckBox cbxMeasE4k;
         private System.Windows.Forms.Timer timer1;
-        private CheckBox checkBox1;
+        private CheckBox cbxCron;
         private Label label7;
         private Button button2;
         private TableLayoutPanel tableLayoutPanel9;
@@ -696,5 +756,9 @@
         private DataGridViewTextBoxColumn Med3;
         private TextBox tbxAdjust;
         private Label lblVpp;
+        private TableLayoutPanel tableLayoutPanel13;
+        private Button button3;
+        private Label lblContE4k;
+        private System.Windows.Forms.Timer timer2;
     }
 }

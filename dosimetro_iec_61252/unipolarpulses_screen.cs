@@ -20,6 +20,7 @@ namespace dosimetro_iec_61252
 
         public String expected_laeq = string.Empty;
         public String expected_exposition = string.Empty;
+        public String ref_level = string.Empty;
 
         public string time = string.Empty;
 
@@ -40,6 +41,7 @@ namespace dosimetro_iec_61252
             expected_laeq = ex_file.read_cell(sheet_name_internal, 14, 5);
             expected_exposition = ex_file.read_cell(sheet_name_internal, 8, 5);
             time = ex_file.read_cell(sheet_name_internal, 3, 2);
+            ref_level = ex_file.read_cell(sheet_name_internal, 4, 2);
             ex_file.close();
         }
 

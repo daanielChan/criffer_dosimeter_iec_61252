@@ -463,6 +463,7 @@
             lblVpp.TabIndex = 5;
             lblVpp.Text = "Aguardando..";
             lblVpp.TextAlign = ContentAlignment.MiddleCenter;
+            lblVpp.TextChanged += lblVpp_TextChanged;
             // 
             // label5
             // 
@@ -499,6 +500,7 @@
             tbxAdjust.Name = "tbxAdjust";
             tbxAdjust.Size = new Size(68, 29);
             tbxAdjust.TabIndex = 16;
+            tbxAdjust.KeyDown += tbxAdjust_KeyDown;
             // 
             // label3
             // 

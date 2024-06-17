@@ -1,4 +1,5 @@
-﻿using System;
+﻿ using DocumentFormat.OpenXml.Spreadsheet;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,12 @@ namespace dosimetro_iec_61252
     {
         const int table_size = 4;
         private Form1 _form1;
+        private TimeSpan timeRemaining;
+        private TimeSpan time2_remaining;
+
+        private double number_adj = 0.00;
+
+        double[] calibratedVppValues = new double[4];
 
         private screens_manager _screen_manager;
 
@@ -29,9 +36,10 @@ namespace dosimetro_iec_61252
                 MessageBox.Show("Você precisa selecionar um arquivo Excel para o correto funcionamento do Software.", "Atenção!");
                 return;
             }
-            lblVpp.Text = _screen_manager._fastpulses.get_vpp();
 
-            _screen_manager._fastpulses.update_values_exposition();
+            _screen_manager._fastpulses.update_values_laeq();
+            lblVpp.Text = _screen_manager._fastpulses.get_vpp();
+            lblSigLvl.Text = _screen_manager._fastpulses.db_ref;
 
             for (int i = 0; i < 4; i++)
             {
@@ -42,8 +50,6 @@ namespace dosimetro_iec_61252
             {
                 dataGridView1.Rows[i].Cells[0].Value = _screen_manager._fastpulses.composed_process_name[i];
             }
-
-            lblTime.Text = _screen_manager._fastpulses.time[0];
 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
@@ -73,6 +79,27 @@ namespace dosimetro_iec_61252
                     e.Graphics.DrawString(text, e.Font, Brushes.Black, e.Bounds, sf);
                 }
             };
+
+
+            tbxAdjust.Text = "0,00";
+
+            _screen_manager._serial.send_data("OUTM0");
+            _screen_manager._serial.send_data("MTYP2");
+            _screen_manager._serial.send_data("FUNC0");
+            _screen_manager._serial.send_data("FREQ4000");
+            _screen_manager._serial.send_data("KEYS6");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            _form1.Show();
+            this.Hide(); // Esconde o formulário principal
+        }
+
+        private double CalculateVpp(double dBSPL, double refDBSPL, double refVpp)
+        {
+            double Vpp = refVpp * Math.Pow(10, (dBSPL - refDBSPL) / 20);
+            return Vpp;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -94,15 +121,9 @@ namespace dosimetro_iec_61252
                     string string_value = Convert.ToString(new_value);
                     _vals_matrix[i][j] = string_value;
                 }
+
             }
-
-            _screen_manager._fastpulses.public_update_mesaure_value(_vals_matrix, num_rows, num_cols);
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            _form1.Show();
-            this.Hide(); // Esconde o formulário principal
+            _screen_manager._fastpulses.laeq_update_mesaure_value(_vals_matrix, num_rows, num_cols);
         }
 
         private void cbxAmpAdj_CheckedChanged(object sender, EventArgs e)
@@ -110,16 +131,205 @@ namespace dosimetro_iec_61252
             if (cbxAmpAdj.Checked == false)
             {
                 tbxAdjust.Enabled = false;
+
+                double V94 = double.Parse(lblVpp.Text);
+
+
+                string[] ref_values = new string[_screen_manager._fastpulses.pulse_level.Length];
+
+                for (int i = 0; i < _screen_manager._fastpulses.pulse_level.Length; i++)
+                {
+                    ref_values[i] = _screen_manager._fastpulses.pulse_level[i];
+                }
+
+
+                for (int i = 0; i < ref_values.Length; i++)
+                {
+                    calibratedVppValues[i] = CalculateVpp(double.Parse(ref_values[i]), double.Parse(lblSigLvl.Text), V94);
+                }
+
+                _screen_manager._serial.send_data("MENA1");
+                update_pulses_generation();
             }
             else
             {
+                _screen_manager._serial.send_data("OUTM0");
+                _screen_manager._serial.send_data("MTYP2");
+                _screen_manager._serial.send_data("FUNC0");
+                _screen_manager._serial.send_data("FREQ4000");
+                _screen_manager._serial.send_data("MENA0");
+
                 tbxAdjust.Enabled = true;
             }
         }
 
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {            
+            lblE4k.Text = _screen_manager._fastpulses.calculated_result[comboBox1.SelectedIndex];
+
+            int totalSeconds = int.Parse(_screen_manager._fastpulses.time[comboBox1.SelectedIndex]);
+
+            TimeSpan ts = TimeSpan.FromSeconds(totalSeconds);
+
+            int hours = ts.Hours;
+            int minutes = ts.Minutes;
+            int seconds = ts.Seconds;
+
+
+            timeRemaining = new TimeSpan(hours, minutes, seconds);
+            lblTime.Text = timeRemaining.ToString(@"hh\:mm\:ss");
+
+            update_pulses_generation();
+        }
+
+
+        private void update_pulses_generation()
         {
-            lblTime.Text = _screen_manager._fastpulses.time[comboBox1.SelectedIndex];
+            if (cbxMeasE4k.Checked)
+            {
+                return;
+            }
+            _screen_manager._serial.send_data("FREQ4000");
+            _screen_manager._serial.send_data("KEYS6");
+
+            _screen_manager._serial.send_data("OUTE0");
+            // 1o pulso    10ms  1:100  95 
+            // 2o pulso    1ms   1:1000 95 
+            // 3o pulso    1ms   1:1000 100 
+            // 4o pulso    10ms  1:1000 100 
+
+            // could be the case 1 or 4.
+            if (_screen_manager._fastpulses.duration[comboBox1.SelectedIndex] == "10")
+            {
+                // case 1.
+                if (_screen_manager._fastpulses.proportion[comboBox1.SelectedIndex] == "1:1000")
+                {
+                    _screen_manager._serial.send_data("BCNT00040");
+                    _screen_manager._serial.send_data("RCNT40000");
+                    _screen_manager._serial.send_data("DPTH0PR");
+                }
+                else
+                { // case 4. 
+                    // corrigir.
+                    _screen_manager._serial.send_data("BCNT00040");
+                    _screen_manager._serial.send_data("RCNT04000");
+                    _screen_manager._serial.send_data("DPTH0PR");
+                }
+            }
+            else
+            { // case 2
+                if (_screen_manager._fastpulses.pulse_level[comboBox1.SelectedIndex].Contains("95"))
+                {
+                    _screen_manager._serial.send_data("BCNT00004");
+                    _screen_manager._serial.send_data("RCNT04000");
+                    _screen_manager._serial.send_data("DPTH0PR");
+                }
+                else
+                { // case 3
+                    if (_screen_manager._fastpulses.pulse_level[comboBox1.SelectedIndex].Contains("100"))
+                    {
+                        _screen_manager._serial.send_data("BCNT00004");
+                        _screen_manager._serial.send_data("RCNT04000");
+                        _screen_manager._serial.send_data("DPTH0PR");
+                    }
+                    else
+                    { // only verify if there are any error.
+
+                        // handle error.
+                    }
+                }
+            }
+
+            string newValue = calibratedVppValues[comboBox1.SelectedIndex].ToString("F4");
+            newValue = newValue.Replace(',', '.');
+
+            string newString = "AMPL" + newValue + "VP";
+
+            _screen_manager._serial.send_data(newString);
+            _screen_manager._serial.send_data("OUTE1");
+        }
+
+        private void lblVpp_TextChanged(object sender, EventArgs e)
+        {
+            string newValue = lblVpp.Text;
+            newValue = newValue.Replace(',', '.');
+
+            string newString = "AMPL" + newValue + "VP";
+
+            _screen_manager._serial.send_data(newString);
+        }
+
+        private void AdjustNumber(int direction)
+        {
+            int cursor_pos = tbxAdjust.SelectionStart;
+            string text = tbxAdjust.Text;
+
+            int comma_idx = text.IndexOf(',');
+
+            if (comma_idx != -1)
+            {
+                double modify = 0.0;
+                if (cursor_pos < comma_idx)
+                {
+                    modify = direction * 1;
+                    number_adj += modify;
+                }
+                else if (cursor_pos == comma_idx + 1)
+                {
+                    modify = direction * 0.1;
+                    number_adj += modify;
+                }
+                else if (cursor_pos == comma_idx + 2)
+                {
+                    modify = direction * 0.01;
+                    number_adj += modify;
+                }
+
+                lblVpp.Text = _screen_manager.calculate_new_vpp(double.Parse(lblVpp.Text), modify).ToString("F4");
+            }
+
+            number_adj = Math.Round(number_adj, 2);
+            tbxAdjust.Text = number_adj.ToString("F2");
+            tbxAdjust.SelectionStart = cursor_pos;
+        }
+
+        private void tbxAdjust_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.PageUp)
+            {
+                AdjustNumber(1);
+                e.Handled = true;
+            }
+            else if (e.KeyCode == Keys.PageDown)
+            {
+                AdjustNumber(-1);
+                e.Handled = true;
+            }
+        }
+
+        private void cbxMeasE4k_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxMeasE4k.Checked)
+            {
+                _screen_manager._serial.send_data("OUTE0");
+
+                _screen_manager._serial.send_data("OUTM0");
+                _screen_manager._serial.send_data("MTYP2");
+                _screen_manager._serial.send_data("FUNC0");
+
+                string newValue = lblVpp.Text;
+                newValue = newValue.Replace(',', '.');
+
+                string newString = "AMPL" + newValue + "VP";
+
+                _screen_manager._serial.send_data(newString);
+            }
+            else
+            {
+                update_pulses_generation();
+            }
         }
     }
 }
+

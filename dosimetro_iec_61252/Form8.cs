@@ -116,9 +116,11 @@ namespace dosimetro_iec_61252
             if (cbxAmpAdj.Checked == false)
             {
                 tbxAdjust.Enabled = false;
+                _screen_manager._serial.send_data("MENA1");
             }
             else
             {
+                _screen_manager._serial.send_data("MENA0");
                 tbxAdjust.Enabled = true;
             }
         }

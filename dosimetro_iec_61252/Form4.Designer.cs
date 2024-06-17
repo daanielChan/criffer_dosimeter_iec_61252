@@ -60,7 +60,7 @@
             lblTime = new Label();
             label7 = new Label();
             tableLayoutPanel12 = new TableLayoutPanel();
-            lvlE4k = new Label();
+            lblE4k = new Label();
             label6 = new Label();
             tableLayoutPanel11 = new TableLayoutPanel();
             label4 = new Label();
@@ -462,7 +462,7 @@
             tableLayoutPanel12.ColumnCount = 2;
             tableLayoutPanel12.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
             tableLayoutPanel12.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
-            tableLayoutPanel12.Controls.Add(lvlE4k, 0, 0);
+            tableLayoutPanel12.Controls.Add(lblE4k, 0, 0);
             tableLayoutPanel12.Controls.Add(label6, 0, 0);
             tableLayoutPanel12.Dock = DockStyle.Fill;
             tableLayoutPanel12.Location = new Point(3, 138);
@@ -472,17 +472,17 @@
             tableLayoutPanel12.Size = new Size(213, 42);
             tableLayoutPanel12.TabIndex = 3;
             // 
-            // lvlE4k
+            // lblE4k
             // 
-            lvlE4k.Anchor = AnchorStyles.Left;
-            lvlE4k.AutoSize = true;
-            lvlE4k.Font = new Font("Arial", 13F);
-            lvlE4k.Location = new Point(130, 0);
-            lvlE4k.Name = "lvlE4k";
-            lvlE4k.Size = new Size(77, 42);
-            lvlE4k.TabIndex = 5;
-            lvlE4k.Text = "Aguardando..";
-            lvlE4k.TextAlign = ContentAlignment.MiddleCenter;
+            lblE4k.Anchor = AnchorStyles.Left;
+            lblE4k.AutoSize = true;
+            lblE4k.Font = new Font("Arial", 13F);
+            lblE4k.Location = new Point(130, 0);
+            lblE4k.Name = "lblE4k";
+            lblE4k.Size = new Size(77, 42);
+            lblE4k.TabIndex = 5;
+            lblE4k.Text = "Aguardando..";
+            lblE4k.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
@@ -561,6 +561,7 @@
             lblVpp.TabIndex = 5;
             lblVpp.Text = "Aguardando..";
             lblVpp.TextAlign = ContentAlignment.MiddleCenter;
+            lblVpp.TextChanged += lblVpp_TextChanged;
             // 
             // label5
             // 
@@ -597,6 +598,7 @@
             tbxAdjust.Name = "tbxAdjust";
             tbxAdjust.Size = new Size(80, 29);
             tbxAdjust.TabIndex = 14;
+            tbxAdjust.KeyDown += tbxAdjust_KeyDown;
             // 
             // label3
             // 
@@ -634,6 +636,7 @@
             cbxMeasE4k.TabIndex = 6;
             cbxMeasE4k.Text = "Medir E4K?";
             cbxMeasE4k.UseVisualStyleBackColor = true;
+            cbxMeasE4k.CheckedChanged += cbxMeasE4k_CheckedChanged;
             // 
             // tableLayoutPanel9
             // 
@@ -722,7 +725,7 @@
         private TableLayoutPanel tableLayoutPanel13;
         private Label lblTime;
         private Label label7;
-        private Label lvlE4k;
+        private Label lblE4k;
         private Label label6;
         private Label lblSigLvl;
         private Label label4;
