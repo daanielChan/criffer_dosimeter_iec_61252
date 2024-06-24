@@ -48,13 +48,13 @@ namespace dosimetro_iec_61252
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
 
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList; // Impede a edição do texto
-            comboBox1.DrawMode = DrawMode.OwnerDrawFixed; // Define o modo de desenho personalizado
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.DrawMode = DrawMode.OwnerDrawFixed;
 
             comboBox1.Items.Add("Negativo");
             comboBox1.Items.Add("Positivo");
 
-            comboBox1.SelectedIndex = 0; // Define o primeiro item como selecionado por padrão
+            comboBox1.SelectedIndex = 0;
 
             comboBox1.DrawItem += (sender, e) =>
             {
@@ -94,7 +94,7 @@ namespace dosimetro_iec_61252
         private void button6_Click(object sender, EventArgs e)
         {
             _form1.Show();
-            this.Hide(); // Esconde o formulário principal
+            this.Hide();
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -117,7 +117,6 @@ namespace dosimetro_iec_61252
                 }
 
             }
-
             _screen_manager._unipolarpulses.laeq_public_update_mesaure_value(_vals_matrix, num_rows, num_cols);
         }
 
@@ -207,7 +206,7 @@ namespace dosimetro_iec_61252
             _screen_manager._serial.send_data("OUTE0");
 
             _screen_manager._serial.send_data("FUNC1");
-            _screen_manager._serial.send_data("BCNT00005");
+            _screen_manager._serial.send_data("BCNT.5");
             _screen_manager._serial.send_data("RCNT00005");
             _screen_manager._serial.send_data("DPTH0PR");
 

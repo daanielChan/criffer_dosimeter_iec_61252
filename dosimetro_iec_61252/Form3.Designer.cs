@@ -51,8 +51,8 @@
             label1 = new Label();
             label3 = new Label();
             lblRef = new Label();
-            label2 = new Label();
             lblVpp = new Label();
+            label2 = new Label();
             tableLayoutPanel3 = new TableLayoutPanel();
             dataGridView1 = new DataGridView();
             ValuesColumn = new DataGridViewTextBoxColumn();
@@ -213,8 +213,8 @@
             tableLayoutPanel2.Controls.Add(label1, 0, 1);
             tableLayoutPanel2.Controls.Add(label3, 0, 3);
             tableLayoutPanel2.Controls.Add(lblRef, 1, 2);
-            tableLayoutPanel2.Controls.Add(label2, 0, 2);
             tableLayoutPanel2.Controls.Add(lblVpp, 1, 3);
+            tableLayoutPanel2.Controls.Add(label2, 0, 2);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(267, 89);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -353,17 +353,6 @@
             lblRef.TabIndex = 8;
             lblRef.Text = "Aguardando..";
             // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Font = new Font("Arial", 14F);
-            label2.Location = new Point(37, 200);
-            label2.Name = "label2";
-            label2.Size = new Size(224, 22);
-            label2.TabIndex = 4;
-            label2.Text = "Nível de Referência (dB):";
-            // 
             // lblVpp
             // 
             lblVpp.Anchor = AnchorStyles.Left;
@@ -375,6 +364,17 @@
             lblVpp.TabIndex = 16;
             lblVpp.Text = "Aguardando..";
             lblVpp.TextChanged += lblVpp_TextChanged;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Font = new Font("Arial", 14F);
+            label2.Location = new Point(37, 200);
+            label2.Name = "label2";
+            label2.Size = new Size(224, 22);
+            label2.TabIndex = 4;
+            label2.Text = "Nível de Referência (dB):";
             // 
             // tableLayoutPanel3
             // 

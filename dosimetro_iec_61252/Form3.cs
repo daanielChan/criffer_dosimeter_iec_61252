@@ -15,7 +15,7 @@ namespace dosimetro_iec_61252
 
         private Form1 _form1;
         private screens_manager _screen_manager;
-        string[] ref_values = new string[8];
+        private string[] ref_values = new string[8];
         private double number_adj = 0.00;
 
         public Form3(Form1 form, screens_manager screen_manager)
@@ -113,7 +113,7 @@ namespace dosimetro_iec_61252
         private void button6_Click(object sender, EventArgs e)
         {
             _form1.Show();
-            this.Hide(); // Esconde o formulário principal
+            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)

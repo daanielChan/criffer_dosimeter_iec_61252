@@ -13,7 +13,7 @@ namespace dosimetro_iec_61252
 {
     public partial class Form5 : Form
     {
-        const int table_size = 4;
+        private const int table_size = 4;
         private Form1 _form1;
         private TimeSpan timeRemaining;
         private TimeSpan time2_remaining;
@@ -21,7 +21,7 @@ namespace dosimetro_iec_61252
         private double number_adj = 0.00;
 
         private screens_manager _screen_manager;
-        double[] calibratedVppValues = new double[4];
+        private double[] calibratedVppValues = new double[4];
 
         public Form5(Form1 form, screens_manager screen_manager)
         {
@@ -40,12 +40,12 @@ namespace dosimetro_iec_61252
             _screen_manager._fastpulses.update_values_exposition();
             lblSigLvl.Text = _screen_manager._fastpulses.db_ref;
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < _screen_manager._fastpulses.composed_process_name.Length; i++)
             {
                 dataGridView1.Rows.Add();
             }
 
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < _screen_manager._fastpulses.composed_process_name.Length; i++)
             {
                 dataGridView1.Rows[i].Cells[0].Value = _screen_manager._fastpulses.composed_process_name[i];
             }
@@ -53,17 +53,15 @@ namespace dosimetro_iec_61252
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
 
-            // Configurações do comboBox1
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList; // Impede a edição do texto
-            comboBox1.DrawMode = DrawMode.OwnerDrawFixed; // Define o modo de desenho personalizado
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.DrawMode = DrawMode.OwnerDrawFixed;
 
-            for (int i = 0; i < table_size; i++)
+            for (int i = 0; i < _screen_manager._fastpulses.composed_process_name.Length; i++)
             {
                 comboBox1.Items.Add(_screen_manager._fastpulses.composed_process_name[i]);
             }
 
-            comboBox1.SelectedIndex = 0; // Define o primeiro item como selecionado por padrão
-
+            comboBox1.SelectedIndex = 0;
             comboBox1.DrawItem += (sender, e) =>
             {
                 if (e.Index < 0)
@@ -112,7 +110,7 @@ namespace dosimetro_iec_61252
         private void button6_Click(object sender, EventArgs e)
         {
             _form1.Show();
-            this.Hide(); // Esconde o formulário principal
+            this.Hide();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -337,10 +335,8 @@ namespace dosimetro_iec_61252
                     number_adj += modify;
                 }
 
-                lblVpp.Text = _screen_manager.calculate_new_vpp(double.Parse(lblVpp.Text), modify).ToString("F4");
+                lblVpp.Text = _screen_manager.calculate_new_vpp(double.Parse(lblVpp.Text), modify).ToString("F5");
             }
-
-
 
             number_adj = Math.Round(number_adj, 2);
             tbxAdjust.Text = number_adj.ToString("F2");

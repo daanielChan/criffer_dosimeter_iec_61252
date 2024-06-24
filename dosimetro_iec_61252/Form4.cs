@@ -16,11 +16,9 @@ namespace dosimetro_iec_61252
         const int table_size = 4;
         private Form1 _form1;
         private TimeSpan timeRemaining;
-        private TimeSpan time2_remaining;
 
         private double number_adj = 0.00;
-
-        double[] calibratedVppValues = new double[4];
+        private double[] calibratedVppValues = new double[4];
 
         private screens_manager _screen_manager;
 
@@ -54,16 +52,15 @@ namespace dosimetro_iec_61252
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
 
-            // Configurações do comboBox1
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList; // Impede a edição do texto
-            comboBox1.DrawMode = DrawMode.OwnerDrawFixed; // Define o modo de desenho personalizado
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.DrawMode = DrawMode.OwnerDrawFixed; 
 
             for (int i = 0; i < table_size; i++)
             {
                 comboBox1.Items.Add(_screen_manager._fastpulses.composed_process_name[i]);
             }
 
-            comboBox1.SelectedIndex = 0; // Define o primeiro item como selecionado por padrão
+            comboBox1.SelectedIndex = 0;
 
             comboBox1.DrawItem += (sender, e) =>
             {
@@ -93,7 +90,7 @@ namespace dosimetro_iec_61252
         private void button6_Click(object sender, EventArgs e)
         {
             _form1.Show();
-            this.Hide(); // Esconde o formulário principal
+            this.Hide();
         }
 
         private double CalculateVpp(double dBSPL, double refDBSPL, double refVpp)
@@ -124,6 +121,7 @@ namespace dosimetro_iec_61252
 
             }
             _screen_manager._fastpulses.laeq_update_mesaure_value(_vals_matrix, num_rows, num_cols);
+            _screen_manager._fastpulses.update_vpp(lblVpp.Text);
         }
 
         private void cbxAmpAdj_CheckedChanged(object sender, EventArgs e)

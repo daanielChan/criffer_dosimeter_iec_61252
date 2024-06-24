@@ -37,13 +37,13 @@ namespace dosimetro_iec_61252
 
             ex_file.init(_sheet_path, _sheet_name);
 
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < reference_arr.Length; i++)
             {
-                _tab_meas [i] = ex_file.read_cell(sheet_name_internal, 7 + i, 1);
+                /*_tab_meas [i] = ex_file.read_cell(sheet_name_internal, 7 + i, 1);
                 if (_tab_meas[i] == null)
-                {
+                {*/
                     _tab_meas[i] = reference_arr [i];
-                }
+                // }
 
                 db_name[i] = _tab_meas[i];
             }

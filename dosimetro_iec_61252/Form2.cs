@@ -16,16 +16,13 @@ namespace dosimetro_iec_61252
 {
     public partial class Form2 : Form
     {
-
-        private screens_manager _screen_manager;
         private Form1 _form1;
-        linear_screen lin_scr;
-        bool _start_consider_change_event = false;
+        private screens_manager _screen_manager;
+        private linear_screen lin_scr;
+
         private double number_adj = 0.00;
-
-        int _conf_value = 0;
-
-        string[] ref_values;
+        private double[] calibratedVppValues = new double[150];
+        private string[] ref_values;
 
         public Form2(Form1 form, screens_manager screen_manager)
         {
@@ -42,50 +39,41 @@ namespace dosimetro_iec_61252
 
             lblRef.Text = _screen_manager._lin_screen.get_ref_val();
 
-            int up_lim   = int.Parse(_screen_manager._init_screen._up_lim_db);
-            int ref_lvl  = int.Parse(_screen_manager._init_screen._ref_level);
+            int up_lim = int.Parse(_screen_manager._init_screen._up_lim_db);
+            int ref_lvl = int.Parse(_screen_manager._init_screen._ref_level);
             int down_lim = int.Parse(_screen_manager._init_screen._down_lim_db);
 
-            for (int i = 0; i < _screen_manager._lin_screen.reference_arr.Length; i++)
+            List<int> refValuesList = _screen_manager._lin_screen.reference_arr.Select(int.Parse).ToList();
+
+            if (!refValuesList.Contains(down_lim) && down_lim < refValuesList.Min())
             {
-                int value = int.Parse(_screen_manager._lin_screen.reference_arr[i]);
-
-                if (value < down_lim)
-                {
-                    _screen_manager._lin_screen.reference_arr[i] = down_lim.ToString();
-                }
-                else if (value > up_lim)
-                {
-                    _screen_manager._lin_screen.reference_arr[i] = up_lim.ToString();
-                }
+                refValuesList.Add(down_lim);
             }
-           
-            string[] extendedArray = new string[_screen_manager._lin_screen.reference_arr.Length + 2];
-            Array.Copy(_screen_manager._lin_screen.reference_arr, extendedArray, _screen_manager._lin_screen.reference_arr.Length);
-            extendedArray[extendedArray.Length - 1] = ref_lvl.ToString();
-            extendedArray[extendedArray.Length - 2] = down_lim.ToString();
 
-            int[] intArray = Array.ConvertAll(extendedArray, int.Parse);
-            Array.Sort(intArray);
+            if (!refValuesList.Contains(up_lim) && up_lim > refValuesList.Max())
+            {
+                refValuesList.Add(up_lim);
+            }
 
-            _screen_manager._lin_screen.reference_arr = Array.ConvertAll(intArray, elem => elem.ToString());
+            if (!refValuesList.Contains(ref_lvl))
+            {
+                refValuesList.Add(ref_lvl);
+            }
+
+            refValuesList.Sort();
+
+            _screen_manager._lin_screen.reference_arr = refValuesList.Select(v => v.ToString()).ToArray();
 
             ref_values = new string[_screen_manager._lin_screen.reference_arr.Length];
-            
-            for (int i = 0; i < _screen_manager._lin_screen.reference_arr.Length; i++)
-            {
-                ref_values[i] = _screen_manager._lin_screen.reference_arr[i];
-            }
+            Array.Copy(_screen_manager._lin_screen.reference_arr, ref_values, _screen_manager._lin_screen.reference_arr.Length);
 
-            for (int i = 0; i < _screen_manager._lin_screen.reference_arr.Length; i++)
+            dataGridView1.Rows.Clear();
+            for (int i = 0; i < ref_values.Length; i++)
             {
                 dataGridView1.Rows.Add();
-            }
-
-            for (int i = 0; i < _screen_manager._lin_screen.reference_arr.Length; i++)
-            {
                 dataGridView1.Rows[i].Cells[0].Value = ref_values[i];
             }
+
 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
@@ -148,9 +136,6 @@ namespace dosimetro_iec_61252
             _screen_manager._lin_screen.public_update_mesaure_value(_vals_matrix, num_rows, num_cols);
         }
 
-        double[] calibratedVppValues = new double[150];
-
-
         private void cbxAmpAdj_CheckedChanged(object sender, EventArgs e)
         {
             if (cbxAmpAdj.Checked == false)
@@ -191,11 +176,6 @@ namespace dosimetro_iec_61252
         {
             double Vpp = refVpp * Math.Pow(10, (dBSPL - refDBSPL) / 20);
             return Vpp;
-        }
-
-        private void tbxAmplAdjust_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void tbxAmplAdjust_KeyDown(object sender, KeyEventArgs e)
@@ -245,7 +225,6 @@ namespace dosimetro_iec_61252
             tbxAmplAdjust.Text = number_adj.ToString("F2");
             tbxAmplAdjust.SelectionStart = cursor_pos;
         }
-
 
         private void lblVpp_TextChanged(object sender, EventArgs e)
         {

@@ -294,7 +294,6 @@
             tbxAmplAdjust.Size = new Size(88, 29);
             tbxAmplAdjust.TabIndex = 0;
             tbxAmplAdjust.Text = "0,00";
-            tbxAmplAdjust.TextChanged += tbxAmplAdjust_TextChanged;
             tbxAmplAdjust.KeyDown += tbxAmplAdjust_KeyDown;
             // 
             // tableLayoutPanel7
@@ -403,8 +402,8 @@
             tableLayoutPanel3.Location = new Point(3, 89);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 91.71597F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 8.284023F));
             tableLayoutPanel3.Size = new Size(258, 338);
             tableLayoutPanel3.TabIndex = 17;
             // 
@@ -446,7 +445,7 @@
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridView1.Size = new Size(252, 163);
+            dataGridView1.Size = new Size(252, 303);
             dataGridView1.TabIndex = 14;
             // 
             // ValuesColumn

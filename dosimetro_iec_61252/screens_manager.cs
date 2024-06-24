@@ -52,10 +52,11 @@ namespace dosimetro_iec_61252
 
         public bool have_sheet_configured ()
         {
-            if (_sheet_name == string.Empty || _sheet_path == string.Empty || _init_screen._down_lim_db == string.Empty || _serial.door == string.Empty)
+            if (_sheet_name == string.Empty || _sheet_path == string.Empty || _init_screen._down_lim_db == string.Empty /*|| _serial.door == string.Empty*/)
             {
                 return false;
             } else {
+
                 return true;
             }
         }

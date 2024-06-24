@@ -1,15 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "WNx06h105S2MHc1kCwY2TVwS+2ANHua+avfiTHZkAEEpMZ5wsGKfVd8I7h+JB8tINb1rOwGy6yeBzKfYNxBhOw==",
+  "dgSpecHash": "GP/QzPEMnWWkQvDAZnaO8CWvnLtodBEQ/u5G99hMIHp96ULc8pk8fOPxbNcqlIX/z6mtg/OQddpUtiIXoURZ8g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Daniel\\Documents\\Projetos_criffer\\criffer_dosimeter_iec_61252\\dosimetro_iec_61252\\dosimetro_iec_61252.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Daniel\\.nuget\\packages\\closedxml\\0.102.2\\closedxml.0.102.2.nupkg.sha512",
+    "C:\\Users\\Daniel\\.nuget\\packages\\costura.fody\\5.7.0\\costura.fody.5.7.0.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\documentformat.openxml\\2.16.0\\documentformat.openxml.2.16.0.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\epplus\\7.1.2\\epplus.7.1.2.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\epplus.interfaces\\6.1.1\\epplus.interfaces.6.1.1.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\epplus.system.drawing\\6.1.1\\epplus.system.drawing.6.1.1.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\excelnumberformat\\1.1.0\\excelnumberformat.1.1.0.nupkg.sha512",
+    "C:\\Users\\Daniel\\.nuget\\packages\\fody\\6.5.5\\fody.6.5.5.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\irony.netcore\\1.0.11\\irony.netcore.1.0.11.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",
     "C:\\Users\\Daniel\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
