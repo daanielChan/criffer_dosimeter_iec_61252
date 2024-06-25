@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,14 +54,17 @@ namespace dosimetro_iec_61252
             dataGridView1.AllowUserToDeleteRows = false;
 
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.DrawMode = DrawMode.OwnerDrawFixed; 
+            comboBox1.DrawMode = DrawMode.OwnerDrawFixed;
 
             for (int i = 0; i < table_size; i++)
             {
                 comboBox1.Items.Add(_screen_manager._fastpulses.composed_process_name[i]);
             }
 
-            comboBox1.SelectedIndex = 0;
+            if (comboBox1.Items.Count > 0)
+            {
+                comboBox1.SelectedIndex = comboBox1.Items.Count - 1;
+            }
 
             comboBox1.DrawItem += (sender, e) =>
             {
@@ -86,20 +90,27 @@ namespace dosimetro_iec_61252
             _screen_manager._serial.send_data("FREQ4000");
             _screen_manager._serial.send_data("KEYS6");
         }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            _form1.Show();
-            this.Hide();
-        }
-
         private double CalculateVpp(double dBSPL, double refDBSPL, double refVpp)
         {
             double Vpp = refVpp * Math.Pow(10, (dBSPL - refDBSPL) / 20);
             return Vpp;
         }
 
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            save();
+            _form1.Show();
+            this.Hide();
+        }
+
         private void button1_Click(object sender, EventArgs e)
+        {
+            save();
+        }
+
+
+        private void save()
         {
             int num_rows = dataGridView1.Rows.Count;
             int num_cols = 3;
@@ -163,10 +174,12 @@ namespace dosimetro_iec_61252
 
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {            
+        {
             lblE4k.Text = _screen_manager._fastpulses.calculated_result[comboBox1.SelectedIndex];
 
-            int totalSeconds = int.Parse(_screen_manager._fastpulses.time[comboBox1.SelectedIndex]);
+            double parsedValue = double.Parse(_screen_manager._fastpulses.time[comboBox1.SelectedIndex], CultureInfo.InvariantCulture);
+
+            int totalSeconds = (int)parsedValue;
 
             TimeSpan ts = TimeSpan.FromSeconds(totalSeconds);
 
@@ -258,50 +271,16 @@ namespace dosimetro_iec_61252
             _screen_manager._serial.send_data(newString);
         }
 
-        private void AdjustNumber(int direction)
-        {
-            int cursor_pos = tbxAdjust.SelectionStart;
-            string text = tbxAdjust.Text;
-
-            int comma_idx = text.IndexOf(',');
-
-            if (comma_idx != -1)
-            {
-                double modify = 0.0;
-                if (cursor_pos < comma_idx)
-                {
-                    modify = direction * 1;
-                    number_adj += modify;
-                }
-                else if (cursor_pos == comma_idx + 1)
-                {
-                    modify = direction * 0.1;
-                    number_adj += modify;
-                }
-                else if (cursor_pos == comma_idx + 2)
-                {
-                    modify = direction * 0.01;
-                    number_adj += modify;
-                }
-
-                lblVpp.Text = _screen_manager.calculate_new_vpp(double.Parse(lblVpp.Text), modify).ToString("F4");
-            }
-
-            number_adj = Math.Round(number_adj, 2);
-            tbxAdjust.Text = number_adj.ToString("F2");
-            tbxAdjust.SelectionStart = cursor_pos;
-        }
-
         private void tbxAdjust_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.PageUp)
             {
-                AdjustNumber(1);
+                _screen_manager.normalize_voltage(1, lblVpp, tbxAdjust, ref number_adj);
                 e.Handled = true;
             }
             else if (e.KeyCode == Keys.PageDown)
             {
-                AdjustNumber(-1);
+                _screen_manager.normalize_voltage(-1, lblVpp, tbxAdjust, ref number_adj);
                 e.Handled = true;
             }
         }
@@ -326,6 +305,23 @@ namespace dosimetro_iec_61252
             else
             {
                 update_pulses_generation();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            save();
+            if (_screen_manager._init_screen._par_med == "Exposição")
+            {
+                Form6 tela6 = new Form6(_form1, _screen_manager);
+                tela6.Show();
+                this.Hide();
+            }
+            else
+            {
+                Form7 tela7 = new Form7(_form1, _screen_manager);
+                tela7.Show();
+                this.Hide();
             }
         }
     }

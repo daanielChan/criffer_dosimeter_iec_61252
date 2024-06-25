@@ -82,9 +82,9 @@
             tableLayoutPanel11 = new TableLayoutPanel();
             CerCalibFix = new Label();
             tableLayoutPanel12 = new TableLayoutPanel();
+            lblCertNum = new Label();
             lblDataLbl = new Label();
             NúmeroLblFix = new Label();
-            NumUpDown = new NumericUpDown();
             DataLblFix = new Label();
             tableLayoutPanel13 = new TableLayoutPanel();
             tableLayoutPanel15 = new TableLayoutPanel();
@@ -127,7 +127,6 @@
             tableLayoutPanel26.SuspendLayout();
             tableLayoutPanel11.SuspendLayout();
             tableLayoutPanel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)NumUpDown).BeginInit();
             tableLayoutPanel13.SuspendLayout();
             tableLayoutPanel15.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
@@ -905,9 +904,9 @@
             tableLayoutPanel12.ColumnCount = 2;
             tableLayoutPanel12.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel12.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel12.Controls.Add(lblCertNum, 0, 1);
             tableLayoutPanel12.Controls.Add(lblDataLbl, 1, 1);
             tableLayoutPanel12.Controls.Add(NúmeroLblFix, 0, 0);
-            tableLayoutPanel12.Controls.Add(NumUpDown, 0, 1);
             tableLayoutPanel12.Controls.Add(DataLblFix, 1, 0);
             tableLayoutPanel12.Dock = DockStyle.Fill;
             tableLayoutPanel12.Location = new Point(4, 29);
@@ -918,6 +917,19 @@
             tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel12.Size = new Size(244, 69);
             tableLayoutPanel12.TabIndex = 1;
+            // 
+            // lblCertNum
+            // 
+            lblCertNum.Anchor = AnchorStyles.None;
+            lblCertNum.AutoSize = true;
+            lblCertNum.BackColor = SystemColors.ControlLightLight;
+            lblCertNum.BorderStyle = BorderStyle.Fixed3D;
+            lblCertNum.Font = new Font("Arial", 12F);
+            lblCertNum.Location = new Point(9, 41);
+            lblCertNum.Name = "lblCertNum";
+            lblCertNum.Size = new Size(104, 20);
+            lblCertNum.TabIndex = 4;
+            lblCertNum.Text = "Aguardando..";
             // 
             // lblDataLbl
             // 
@@ -943,16 +955,6 @@
             NúmeroLblFix.TabIndex = 0;
             NúmeroLblFix.Text = "Número";
             NúmeroLblFix.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // NumUpDown
-            // 
-            NumUpDown.Anchor = AnchorStyles.None;
-            NumUpDown.Font = new Font("Arial", 12F);
-            NumUpDown.Location = new Point(12, 38);
-            NumUpDown.Maximum = new decimal(new int[] { 100000000, 0, 0, 0 });
-            NumUpDown.Name = "NumUpDown";
-            NumUpDown.Size = new Size(98, 26);
-            NumUpDown.TabIndex = 1;
             // 
             // DataLblFix
             // 
@@ -1249,7 +1251,6 @@
             tableLayoutPanel11.PerformLayout();
             tableLayoutPanel12.ResumeLayout(false);
             tableLayoutPanel12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)NumUpDown).EndInit();
             tableLayoutPanel13.ResumeLayout(false);
             tableLayoutPanel13.PerformLayout();
             tableLayoutPanel15.ResumeLayout(false);
@@ -1296,7 +1297,6 @@
         private Label CerCalibFix;
         private TableLayoutPanel tableLayoutPanel12;
         private Label NúmeroLblFix;
-        private NumericUpDown NumUpDown;
         private Label DataLblFix;
         private Label lblDataLbl;
         private TableLayoutPanel tableLayoutPanel13;
@@ -1340,5 +1340,6 @@
         private TableLayoutPanel tableLayoutPanel23;
         private Button btnUpdate;
         private Label label13;
+        private Label lblCertNum;
     }
 }

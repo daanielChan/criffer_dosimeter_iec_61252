@@ -68,5 +68,75 @@ namespace dosimetro_iec_61252
             double result = reference * powerOfTen;
             return result;
         }
+
+        public void normalize_voltage(int direction, Label lbl, TextBox tbx, ref double number_adj)
+        {
+            int cursor_pos = tbx.SelectionStart;
+            string text = tbx.Text;
+
+            bool wasNegative = text.StartsWith("-");
+            int comma_idx = text.IndexOf(',');
+
+            if (comma_idx != -1)
+            {
+                double modify = 0.0;
+                if (cursor_pos < comma_idx)
+                {
+                    modify = direction * 1;
+                    number_adj += modify;
+                }
+                else if (cursor_pos == comma_idx + 1)
+                {
+                    modify = direction * 0.1;
+                    number_adj += modify;
+                }
+                else if (cursor_pos == comma_idx + 2)
+                {
+                    modify = direction * 0.01;
+                    number_adj += modify;
+                }
+
+                bool isNegative = number_adj < 0;
+                if (wasNegative != isNegative)
+                {
+                    if (isNegative)
+                    {
+                        tbx.Text = "-" + (-number_adj).ToString("F2");
+                    }
+                    else
+                    {
+                        tbx.Text = number_adj.ToString("F2").TrimStart('-');
+                    }
+
+                    if (wasNegative && cursor_pos <= comma_idx + 1)
+                    {
+                        if (cursor_pos - 1 >= 0)
+                        {
+                            tbx.SelectionStart = cursor_pos - 1;
+                        } else
+                        {
+                            tbx.SelectionStart = cursor_pos;
+                        }
+                    }
+                    else if (!wasNegative && cursor_pos > comma_idx)
+                    {
+                        tbx.SelectionStart = cursor_pos + 1;
+                    }
+                    else
+                    {
+                        tbx.SelectionStart = cursor_pos;
+                    }
+                }
+                else
+                {
+                    tbx.Text = number_adj.ToString("F2");
+                    tbx.SelectionStart = cursor_pos;
+                }
+
+                lbl.Text = calculate_new_vpp(double.Parse(lbl.Text), modify).ToString("F8");
+            }
+
+            number_adj = Math.Round(number_adj, 2);
+        }
     }
 }

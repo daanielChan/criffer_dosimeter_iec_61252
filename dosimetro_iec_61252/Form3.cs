@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Drawing;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -51,7 +52,7 @@ namespace dosimetro_iec_61252
                 if (up_lim == "12500")
                 {
                     up_lim = "12589,25";
-                } 
+                }
                 ref_values = ref_values.Concat(new[] { up_lim }).ToArray();
             }
 
@@ -61,7 +62,10 @@ namespace dosimetro_iec_61252
                 {
                     down_lim = "31,62";
                 }
-                ref_values = new[] { down_lim }.Concat(ref_values).ToArray();
+                if (down_lim != "63")
+                {
+                    ref_values = new[] { down_lim }.Concat(ref_values).ToArray();
+                }
             }
 
             for (int i = 0; i < ref_values.Length; i++)
@@ -112,11 +116,18 @@ namespace dosimetro_iec_61252
 
         private void button6_Click(object sender, EventArgs e)
         {
+            save();
             _form1.Show();
             this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+            save();
+        }
+
+
+        private void save()
         {
             int num_rows = dataGridView1.Rows.Count;
             int num_cols = 4;
@@ -156,48 +167,14 @@ namespace dosimetro_iec_61252
         {
             if (e.KeyCode == Keys.PageUp)
             {
-                AdjustNumber(1);
+                _screen_manager.normalize_voltage(1, lblVpp, tbxAmplAdjust, ref number_adj);
                 e.Handled = true;
             }
             else if (e.KeyCode == Keys.PageDown)
             {
-                AdjustNumber(-1);
+                _screen_manager.normalize_voltage(-1, lblVpp, tbxAmplAdjust, ref number_adj);
                 e.Handled = true;
             }
-        }
-
-        private void AdjustNumber(int direction)
-        {
-            int cursor_pos = tbxAmplAdjust.SelectionStart;
-            string text = tbxAmplAdjust.Text;
-
-            int comma_idx = text.IndexOf(',');
-
-            if (comma_idx != -1)
-            {
-                double modify = 0.0;
-                if (cursor_pos < comma_idx)
-                {
-                    modify = direction * 1;
-                    number_adj += modify;
-                }
-                else if (cursor_pos == comma_idx + 1)
-                {
-                    modify = direction * 0.1;
-                    number_adj += modify;
-                }
-                else if (cursor_pos == comma_idx + 2)
-                {
-                    modify = direction * 0.01;
-                    number_adj += modify;
-                }
-
-                lblVpp.Text = _screen_manager.calculate_new_vpp(double.Parse(lblVpp.Text), modify).ToString("F4");
-            }
-
-            number_adj = Math.Round(number_adj, 2);
-            tbxAmplAdjust.Text = number_adj.ToString("F2");
-            tbxAmplAdjust.SelectionStart = cursor_pos;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -218,6 +195,31 @@ namespace dosimetro_iec_61252
             string newString = "AMPL" + newValue + "VP";
 
             _screen_manager._serial.send_data(newString);
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            int currentRowIndex = dataGridView1.CurrentCell.RowIndex;
+            int nextRowIndex = (currentRowIndex + 1) % dataGridView1.Rows.Count;
+            comboBox1.SelectedIndex = nextRowIndex;
+            dataGridView1.CurrentCell = dataGridView1.Rows[nextRowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex];
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            save();
+            if (_screen_manager._init_screen._par_med == "Exposição")
+            {
+                Form5 tela5 = new Form5(_form1, _screen_manager);
+                tela5.Show();
+                this.Hide();
+            }
+            else
+            {
+                Form4 tela4 = new Form4(_form1, _screen_manager);
+                tela4.Show();
+                this.Hide();
+            }
         }
     }
 }

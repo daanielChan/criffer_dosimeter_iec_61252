@@ -35,6 +35,10 @@
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             tableLayoutPanel1 = new TableLayoutPanel();
+            tableLayoutPanel14 = new TableLayoutPanel();
+            tableLayoutPanel15 = new TableLayoutPanel();
+            button4 = new Button();
+            tableLayoutPanel16 = new TableLayoutPanel();
             tableLayoutPanel21 = new TableLayoutPanel();
             tableLayoutPanel26 = new TableLayoutPanel();
             button6 = new Button();
@@ -77,6 +81,8 @@
             timer1 = new System.Windows.Forms.Timer(components);
             timer2 = new System.Windows.Forms.Timer(components);
             tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel14.SuspendLayout();
+            tableLayoutPanel15.SuspendLayout();
             tableLayoutPanel21.SuspendLayout();
             tableLayoutPanel26.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
@@ -98,9 +104,10 @@
             // 
             tableLayoutPanel1.BackColor = Color.FromArgb(192, 192, 255);
             tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel14, 2, 0);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel21, 0, 0);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel10, 1, 0);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 1);
@@ -114,6 +121,63 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(800, 450);
             tableLayoutPanel1.TabIndex = 5;
+            // 
+            // tableLayoutPanel14
+            // 
+            tableLayoutPanel14.BackColor = Color.FromArgb(192, 192, 255);
+            tableLayoutPanel14.ColumnCount = 1;
+            tableLayoutPanel14.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel14.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel14.Controls.Add(tableLayoutPanel15, 0, 0);
+            tableLayoutPanel14.Controls.Add(tableLayoutPanel16, 0, 1);
+            tableLayoutPanel14.Dock = DockStyle.Fill;
+            tableLayoutPanel14.Location = new Point(723, 3);
+            tableLayoutPanel14.Name = "tableLayoutPanel14";
+            tableLayoutPanel14.RowCount = 2;
+            tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel14.Size = new Size(74, 67);
+            tableLayoutPanel14.TabIndex = 15;
+            // 
+            // tableLayoutPanel15
+            // 
+            tableLayoutPanel15.ColumnCount = 1;
+            tableLayoutPanel15.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34F));
+            tableLayoutPanel15.Controls.Add(button4, 0, 0);
+            tableLayoutPanel15.Dock = DockStyle.Fill;
+            tableLayoutPanel15.Location = new Point(3, 3);
+            tableLayoutPanel15.Name = "tableLayoutPanel15";
+            tableLayoutPanel15.RowCount = 1;
+            tableLayoutPanel15.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel15.RowStyles.Add(new RowStyle(SizeType.Absolute, 28F));
+            tableLayoutPanel15.Size = new Size(68, 27);
+            tableLayoutPanel15.TabIndex = 3;
+            // 
+            // button4
+            // 
+            button4.BackColor = SystemColors.MenuHighlight;
+            button4.BackgroundImageLayout = ImageLayout.Zoom;
+            button4.Dock = DockStyle.Fill;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Location = new Point(3, 3);
+            button4.Name = "button4";
+            button4.Size = new Size(62, 21);
+            button4.TabIndex = 11;
+            button4.Text = "Proximo Teste";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
+            // tableLayoutPanel16
+            // 
+            tableLayoutPanel16.ColumnCount = 1;
+            tableLayoutPanel16.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel16.Dock = DockStyle.Fill;
+            tableLayoutPanel16.Location = new Point(3, 36);
+            tableLayoutPanel16.Name = "tableLayoutPanel16";
+            tableLayoutPanel16.RowCount = 1;
+            tableLayoutPanel16.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel16.Size = new Size(68, 28);
+            tableLayoutPanel16.TabIndex = 4;
             // 
             // tableLayoutPanel21
             // 
@@ -129,14 +193,13 @@
             tableLayoutPanel21.RowCount = 2;
             tableLayoutPanel21.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel21.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel21.Size = new Size(114, 67);
+            tableLayoutPanel21.Size = new Size(74, 67);
             tableLayoutPanel21.TabIndex = 13;
             // 
             // tableLayoutPanel26
             // 
-            tableLayoutPanel26.ColumnCount = 2;
+            tableLayoutPanel26.ColumnCount = 1;
             tableLayoutPanel26.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34F));
-            tableLayoutPanel26.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33F));
             tableLayoutPanel26.Controls.Add(button6, 0, 0);
             tableLayoutPanel26.Dock = DockStyle.Fill;
             tableLayoutPanel26.Location = new Point(3, 3);
@@ -144,7 +207,7 @@
             tableLayoutPanel26.RowCount = 1;
             tableLayoutPanel26.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel26.RowStyles.Add(new RowStyle(SizeType.Absolute, 28F));
-            tableLayoutPanel26.Size = new Size(108, 27);
+            tableLayoutPanel26.Size = new Size(68, 27);
             tableLayoutPanel26.TabIndex = 3;
             // 
             // button6
@@ -155,7 +218,7 @@
             button6.FlatStyle = FlatStyle.Flat;
             button6.Location = new Point(3, 3);
             button6.Name = "button6";
-            button6.Size = new Size(48, 21);
+            button6.Size = new Size(62, 21);
             button6.TabIndex = 11;
             button6.Text = "Início e Configurações";
             button6.UseVisualStyleBackColor = false;
@@ -163,8 +226,7 @@
             // 
             // tableLayoutPanel5
             // 
-            tableLayoutPanel5.ColumnCount = 2;
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.ColumnCount = 1;
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.Controls.Add(button1, 0, 0);
             tableLayoutPanel5.Dock = DockStyle.Fill;
@@ -172,7 +234,7 @@
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(108, 28);
+            tableLayoutPanel5.Size = new Size(68, 28);
             tableLayoutPanel5.TabIndex = 4;
             // 
             // button1
@@ -183,7 +245,7 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Location = new Point(3, 3);
             button1.Name = "button1";
-            button1.Size = new Size(48, 22);
+            button1.Size = new Size(62, 22);
             button1.TabIndex = 12;
             button1.Text = "Salvar Excel";
             button1.UseVisualStyleBackColor = false;
@@ -197,12 +259,12 @@
             tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel10.Controls.Add(header1, 0, 0);
             tableLayoutPanel10.Dock = DockStyle.Fill;
-            tableLayoutPanel10.Location = new Point(123, 3);
+            tableLayoutPanel10.Location = new Point(83, 3);
             tableLayoutPanel10.Name = "tableLayoutPanel10";
             tableLayoutPanel10.RowCount = 1;
             tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Absolute, 67F));
-            tableLayoutPanel10.Size = new Size(554, 67);
+            tableLayoutPanel10.Size = new Size(634, 67);
             tableLayoutPanel10.TabIndex = 7;
             // 
             // header1
@@ -212,7 +274,7 @@
             header1.AutoSize = true;
             header1.BackColor = Color.FromArgb(192, 192, 255);
             header1.Font = new Font("Arial Black", 15F);
-            header1.Location = new Point(7, 5);
+            header1.Location = new Point(47, 5);
             header1.Name = "header1";
             header1.Size = new Size(539, 56);
             header1.TabIndex = 0;
@@ -226,12 +288,12 @@
             tableLayoutPanel2.Controls.Add(tableLayoutPanel3, 0, 0);
             tableLayoutPanel2.Controls.Add(tableLayoutPanel6, 0, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(123, 76);
+            tableLayoutPanel2.Location = new Point(83, 76);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 48.2857132F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 51.7142868F));
-            tableLayoutPanel2.Size = new Size(554, 350);
+            tableLayoutPanel2.Size = new Size(634, 350);
             tableLayoutPanel2.TabIndex = 14;
             // 
             // tableLayoutPanel3
@@ -255,7 +317,7 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.Size = new Size(548, 163);
+            tableLayoutPanel3.Size = new Size(628, 163);
             tableLayoutPanel3.TabIndex = 0;
             // 
             // dataGridView1
@@ -297,7 +359,7 @@
             dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridViewCellStyle5.Font = new Font("Arial", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridView1.Size = new Size(542, 85);
+            dataGridView1.Size = new Size(622, 85);
             dataGridView1.TabIndex = 16;
             // 
             // ValuesColumn
@@ -339,7 +401,7 @@
             tableLayoutPanel4.RowCount = 2;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Size = new Size(542, 66);
+            tableLayoutPanel4.Size = new Size(622, 66);
             tableLayoutPanel4.TabIndex = 1;
             // 
             // label1
@@ -347,9 +409,9 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Arial", 13F);
-            label1.Location = new Point(12, 0);
+            label1.Location = new Point(18, 6);
             label1.Name = "label1";
-            label1.Size = new Size(517, 33);
+            label1.Size = new Size(585, 21);
             label1.TabIndex = 0;
             label1.Text = "Duração (ms) / Razão / Nível (dB) / Tempo (s) / Parâmetro a ser medido:";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -361,7 +423,7 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(3, 36);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(536, 30);
+            comboBox1.Size = new Size(616, 30);
             comboBox1.TabIndex = 1;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
@@ -390,7 +452,7 @@
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel6.Size = new Size(548, 175);
+            tableLayoutPanel6.Size = new Size(628, 175);
             tableLayoutPanel6.TabIndex = 1;
             // 
             // tableLayoutPanel13
@@ -401,11 +463,11 @@
             tableLayoutPanel13.Controls.Add(lblContE4k, 0, 0);
             tableLayoutPanel13.Controls.Add(button3, 1, 0);
             tableLayoutPanel13.Dock = DockStyle.Fill;
-            tableLayoutPanel13.Location = new Point(194, 89);
+            tableLayoutPanel13.Location = new Point(222, 89);
             tableLayoutPanel13.Name = "tableLayoutPanel13";
             tableLayoutPanel13.RowCount = 1;
             tableLayoutPanel13.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel13.Size = new Size(158, 37);
+            tableLayoutPanel13.Size = new Size(182, 37);
             tableLayoutPanel13.TabIndex = 15;
             // 
             // lblContE4k
@@ -413,9 +475,9 @@
             lblContE4k.Anchor = AnchorStyles.None;
             lblContE4k.AutoSize = true;
             lblContE4k.Font = new Font("Arial", 18F, FontStyle.Bold);
-            lblContE4k.Location = new Point(3, 0);
+            lblContE4k.Location = new Point(6, 0);
             lblContE4k.Name = "lblContE4k";
-            lblContE4k.Size = new Size(72, 37);
+            lblContE4k.Size = new Size(79, 37);
             lblContE4k.TabIndex = 14;
             lblContE4k.Text = "00:00:00";
             lblContE4k.TextAlign = ContentAlignment.MiddleCenter;
@@ -426,9 +488,9 @@
             button3.BackgroundImageLayout = ImageLayout.Zoom;
             button3.Dock = DockStyle.Fill;
             button3.FlatStyle = FlatStyle.Flat;
-            button3.Location = new Point(82, 3);
+            button3.Location = new Point(94, 3);
             button3.Name = "button3";
-            button3.Size = new Size(73, 31);
+            button3.Size = new Size(85, 31);
             button3.TabIndex = 13;
             button3.Text = "Iniciar Contagem - E4K";
             button3.UseVisualStyleBackColor = false;
@@ -446,7 +508,7 @@
             tableLayoutPanel12.Name = "tableLayoutPanel12";
             tableLayoutPanel12.RowCount = 1;
             tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel12.Size = new Size(185, 40);
+            tableLayoutPanel12.Size = new Size(213, 40);
             tableLayoutPanel12.TabIndex = 3;
             // 
             // lblE4k
@@ -454,9 +516,9 @@
             lblE4k.Anchor = AnchorStyles.Left;
             lblE4k.AutoSize = true;
             lblE4k.Font = new Font("Arial", 13F);
-            lblE4k.Location = new Point(114, 0);
+            lblE4k.Location = new Point(130, 0);
             lblE4k.Name = "lblE4k";
-            lblE4k.Size = new Size(67, 40);
+            lblE4k.Size = new Size(77, 40);
             lblE4k.TabIndex = 5;
             lblE4k.Text = "Aguardando..";
             lblE4k.TextAlign = ContentAlignment.MiddleCenter;
@@ -466,7 +528,7 @@
             label6.Anchor = AnchorStyles.Right;
             label6.AutoSize = true;
             label6.Font = new Font("Arial", 13F);
-            label6.Location = new Point(59, 9);
+            label6.Location = new Point(75, 9);
             label6.Name = "label6";
             label6.Size = new Size(49, 21);
             label6.TabIndex = 4;
@@ -485,7 +547,7 @@
             tableLayoutPanel11.Name = "tableLayoutPanel11";
             tableLayoutPanel11.RowCount = 1;
             tableLayoutPanel11.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel11.Size = new Size(185, 37);
+            tableLayoutPanel11.Size = new Size(213, 37);
             tableLayoutPanel11.TabIndex = 2;
             // 
             // label4
@@ -493,9 +555,9 @@
             label4.Anchor = AnchorStyles.Right;
             label4.AutoSize = true;
             label4.Font = new Font("Arial", 13F);
-            label4.Location = new Point(14, 0);
+            label4.Location = new Point(3, 0);
             label4.Name = "label4";
-            label4.Size = new Size(94, 37);
+            label4.Size = new Size(121, 37);
             label4.TabIndex = 3;
             label4.Text = "Nível do Sinal (dB):";
             label4.TextAlign = ContentAlignment.MiddleCenter;
@@ -505,9 +567,9 @@
             lblSigLvl.Anchor = AnchorStyles.Left;
             lblSigLvl.AutoSize = true;
             lblSigLvl.Font = new Font("Arial", 13F);
-            lblSigLvl.Location = new Point(114, 0);
+            lblSigLvl.Location = new Point(130, 0);
             lblSigLvl.Name = "lblSigLvl";
-            lblSigLvl.Size = new Size(67, 37);
+            lblSigLvl.Size = new Size(77, 37);
             lblSigLvl.TabIndex = 4;
             lblSigLvl.Text = "Aguardando..";
             lblSigLvl.TextAlign = ContentAlignment.MiddleCenter;
@@ -524,7 +586,7 @@
             tableLayoutPanel8.Name = "tableLayoutPanel8";
             tableLayoutPanel8.RowCount = 1;
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel8.Size = new Size(185, 37);
+            tableLayoutPanel8.Size = new Size(213, 37);
             tableLayoutPanel8.TabIndex = 1;
             // 
             // lblVpp
@@ -532,9 +594,9 @@
             lblVpp.Anchor = AnchorStyles.Left;
             lblVpp.AutoSize = true;
             lblVpp.Font = new Font("Arial", 13F);
-            lblVpp.Location = new Point(114, 0);
+            lblVpp.Location = new Point(130, 0);
             lblVpp.Name = "lblVpp";
-            lblVpp.Size = new Size(67, 37);
+            lblVpp.Size = new Size(77, 37);
             lblVpp.TabIndex = 5;
             lblVpp.Text = "Aguardando..";
             lblVpp.TextAlign = ContentAlignment.MiddleCenter;
@@ -545,7 +607,7 @@
             label5.Anchor = AnchorStyles.Right;
             label5.AutoSize = true;
             label5.Font = new Font("Arial", 13F);
-            label5.Location = new Point(62, 8);
+            label5.Location = new Point(78, 8);
             label5.Name = "label5";
             label5.Size = new Size(46, 21);
             label5.TabIndex = 4;
@@ -564,14 +626,14 @@
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 1;
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel7.Size = new Size(185, 37);
+            tableLayoutPanel7.Size = new Size(213, 37);
             tableLayoutPanel7.TabIndex = 0;
             // 
             // tbxAdjust
             // 
             tbxAdjust.Anchor = AnchorStyles.Left;
             tbxAdjust.Font = new Font("Arial", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbxAdjust.Location = new Point(114, 4);
+            tbxAdjust.Location = new Point(130, 4);
             tbxAdjust.Name = "tbxAdjust";
             tbxAdjust.Size = new Size(68, 29);
             tbxAdjust.TabIndex = 14;
@@ -582,7 +644,7 @@
             label3.Anchor = AnchorStyles.Right;
             label3.AutoSize = true;
             label3.Font = new Font("Arial", 13F);
-            label3.Location = new Point(5, 8);
+            label3.Location = new Point(21, 8);
             label3.Name = "label3";
             label3.Size = new Size(103, 21);
             label3.TabIndex = 2;
@@ -594,9 +656,9 @@
             cbxAmpAdj.Anchor = AnchorStyles.None;
             cbxAmpAdj.AutoSize = true;
             cbxAmpAdj.Font = new Font("Arial", 13F);
-            cbxAmpAdj.Location = new Point(194, 9);
+            cbxAmpAdj.Location = new Point(225, 9);
             cbxAmpAdj.Name = "cbxAmpAdj";
-            cbxAmpAdj.Size = new Size(158, 25);
+            cbxAmpAdj.Size = new Size(176, 25);
             cbxAmpAdj.TabIndex = 5;
             cbxAmpAdj.Text = "Ajustar Amplitude?";
             cbxAmpAdj.UseVisualStyleBackColor = true;
@@ -607,7 +669,7 @@
             cbxMeasE4k.Anchor = AnchorStyles.None;
             cbxMeasE4k.AutoSize = true;
             cbxMeasE4k.Font = new Font("Arial", 13F);
-            cbxMeasE4k.Location = new Point(211, 139);
+            cbxMeasE4k.Location = new Point(251, 139);
             cbxMeasE4k.Name = "cbxMeasE4k";
             cbxMeasE4k.Size = new Size(123, 25);
             cbxMeasE4k.TabIndex = 6;
@@ -620,9 +682,9 @@
             cbxCron.Anchor = AnchorStyles.None;
             cbxCron.AutoSize = true;
             cbxCron.Font = new Font("Arial", 13F);
-            cbxCron.Location = new Point(358, 52);
+            cbxCron.Location = new Point(421, 52);
             cbxCron.Name = "cbxCron";
-            cbxCron.Size = new Size(187, 25);
+            cbxCron.Size = new Size(192, 25);
             cbxCron.TabIndex = 7;
             cbxCron.Text = "Utilizar Cronômetro?";
             cbxCron.UseVisualStyleBackColor = true;
@@ -633,7 +695,7 @@
             label7.Anchor = AnchorStyles.None;
             label7.AutoSize = true;
             label7.Font = new Font("Arial", 18F, FontStyle.Bold);
-            label7.Location = new Point(399, 137);
+            label7.Location = new Point(465, 137);
             label7.Name = "label7";
             label7.Size = new Size(105, 29);
             label7.TabIndex = 9;
@@ -648,11 +710,11 @@
             tableLayoutPanel9.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel9.Controls.Add(button2, 1, 0);
             tableLayoutPanel9.Dock = DockStyle.Fill;
-            tableLayoutPanel9.Location = new Point(358, 89);
+            tableLayoutPanel9.Location = new Point(410, 89);
             tableLayoutPanel9.Name = "tableLayoutPanel9";
             tableLayoutPanel9.RowCount = 1;
             tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel9.Size = new Size(187, 37);
+            tableLayoutPanel9.Size = new Size(215, 37);
             tableLayoutPanel9.TabIndex = 14;
             // 
             // button2
@@ -661,9 +723,9 @@
             button2.BackgroundImageLayout = ImageLayout.Zoom;
             button2.Dock = DockStyle.Fill;
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(40, 3);
+            button2.Location = new Point(46, 3);
             button2.Name = "button2";
-            button2.Size = new Size(106, 31);
+            button2.Size = new Size(123, 31);
             button2.TabIndex = 13;
             button2.Text = "Iniciar Contagem";
             button2.UseVisualStyleBackColor = false;
@@ -690,6 +752,8 @@
             Text = "Exposição - Teste de Resposta a Sinais de Curta Duração";
             WindowState = FormWindowState.Maximized;
             tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel14.ResumeLayout(false);
+            tableLayoutPanel15.ResumeLayout(false);
             tableLayoutPanel21.ResumeLayout(false);
             tableLayoutPanel26.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
@@ -760,5 +824,9 @@
         private Button button3;
         private Label lblContE4k;
         private System.Windows.Forms.Timer timer2;
+        private TableLayoutPanel tableLayoutPanel14;
+        private TableLayoutPanel tableLayoutPanel15;
+        private Button button4;
+        private TableLayoutPanel tableLayoutPanel16;
     }
 }

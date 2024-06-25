@@ -71,7 +71,8 @@ namespace dosimetro_iec_61252
                 }
             };
 
-            double totalSeconds = double.Parse(_screen_manager._unipolarpulses.time);
+            double parsedValue = double.Parse(_screen_manager._unipolarpulses.time);
+            int totalSeconds = (int)parsedValue;
 
             TimeSpan ts = TimeSpan.FromSeconds(totalSeconds);
 
@@ -93,10 +94,17 @@ namespace dosimetro_iec_61252
 
         private void button6_Click(object sender, EventArgs e)
         {
+            save();
             _form1.Show();
             this.Hide();
         }
         private void button1_Click(object sender, EventArgs e)
+        {
+            save();
+            
+        }
+
+        private void save ()
         {
             int num_rows = dataGridView1.Rows.Count;
             int num_cols = 3;
@@ -144,48 +152,14 @@ namespace dosimetro_iec_61252
         {
             if (e.KeyCode == Keys.PageUp)
             {
-                AdjustNumber(1);
+                _screen_manager.normalize_voltage(1, lblVpp, tbxAdjust, ref number_adj);
                 e.Handled = true;
             }
             else if (e.KeyCode == Keys.PageDown)
             {
-                AdjustNumber(-1);
+                _screen_manager.normalize_voltage(-1, lblVpp, tbxAdjust, ref number_adj);
                 e.Handled = true;
             }
-        }
-
-        private void AdjustNumber(int direction)
-        {
-            int cursor_pos = tbxAdjust.SelectionStart;
-            string text = tbxAdjust.Text;
-
-            int comma_idx = text.IndexOf(',');
-
-            if (comma_idx != -1)
-            {
-                double modify = 0.0;
-                if (cursor_pos < comma_idx)
-                {
-                    modify = direction * 1;
-                    number_adj += modify;
-                }
-                else if (cursor_pos == comma_idx + 1)
-                {
-                    modify = direction * 0.1;
-                    number_adj += modify;
-                }
-                else if (cursor_pos == comma_idx + 2)
-                {
-                    modify = direction * 0.01;
-                    number_adj += modify;
-                }
-
-                lblVpp.Text = _screen_manager.calculate_new_vpp(double.Parse(lblVpp.Text), modify).ToString("F4");
-            }
-
-            number_adj = Math.Round(number_adj, 2);
-            tbxAdjust.Text = number_adj.ToString("F2");
-            tbxAdjust.SelectionStart = cursor_pos;
         }
 
         private void lblVpp_TextChanged(object sender, EventArgs e)

@@ -93,7 +93,7 @@ namespace dosimetro_iec_61252
 
             if (_screen_manager._init_screen._cert_num != null)
             {
-                NumUpDown.Value = int.Parse(_screen_manager._init_screen._cert_num);
+                lblCertNum.Text = _screen_manager._init_screen._cert_num;
             }
 
             MessageBox.Show("Operação Concluída.", "Operação com Arquivo Externo");
@@ -110,7 +110,7 @@ namespace dosimetro_iec_61252
             _screen_manager._init_screen._umid = umidUpDown.Value.ToString();
             _screen_manager._init_screen._temp = tempUpDown.Value.ToString();
             _screen_manager._init_screen._press = pressUpDown.Value.ToString();
-            _screen_manager._init_screen._cert_num = NumUpDown.Value.ToString();
+            _screen_manager._init_screen._cert_num = lblCertNum.Text;
 
             _screen_manager._init_screen.update_to_excel();
 
