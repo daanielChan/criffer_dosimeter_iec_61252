@@ -188,6 +188,7 @@
             button6.TabIndex = 11;
             button6.Text = "Início e Configurações";
             button6.UseVisualStyleBackColor = false;
+            button6.Click += button6_Click;
             // 
             // tableLayoutPanel5
             // 
@@ -216,6 +217,7 @@
             button1.TabIndex = 12;
             button1.Text = "Salvar Excel";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click_1;
             // 
             // tableLayoutPanel10
             // 

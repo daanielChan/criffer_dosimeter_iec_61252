@@ -224,9 +224,15 @@ namespace dosimetro_iec_61252
         {
             int currentRowIndex = dataGridView1.CurrentCell.RowIndex;
             int nextRowIndex = (currentRowIndex + 1) % dataGridView1.Rows.Count;
-            comboBox1.SelectedIndex = nextRowIndex;
-            dataGridView1.CurrentCell = dataGridView1.Rows[nextRowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex];
+
+            // Adiar a mudança da célula atual para evitar a exceção de chamada reentrante
+            this.BeginInvoke(new Action(() =>
+            {
+                comboBox1.SelectedIndex = nextRowIndex;
+                dataGridView1.CurrentCell = dataGridView1.Rows[nextRowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex];
+            }));
         }
+
 
         private void button3_Click(object sender, EventArgs e)
         {

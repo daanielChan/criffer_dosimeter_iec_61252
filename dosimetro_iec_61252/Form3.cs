@@ -121,11 +121,6 @@ namespace dosimetro_iec_61252
             this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            save();
-        }
-
 
         private void save()
         {
@@ -201,9 +196,14 @@ namespace dosimetro_iec_61252
         {
             int currentRowIndex = dataGridView1.CurrentCell.RowIndex;
             int nextRowIndex = (currentRowIndex + 1) % dataGridView1.Rows.Count;
-            comboBox1.SelectedIndex = nextRowIndex;
-            dataGridView1.CurrentCell = dataGridView1.Rows[nextRowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex];
+
+            this.BeginInvoke(new Action(() =>
+            {
+                comboBox1.SelectedIndex = nextRowIndex;
+                dataGridView1.CurrentCell = dataGridView1.Rows[nextRowIndex].Cells[dataGridView1.CurrentCell.ColumnIndex];
+            }));
         }
+
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -220,6 +220,11 @@ namespace dosimetro_iec_61252
                 tela4.Show();
                 this.Hide();
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            save();
         }
     }
 }

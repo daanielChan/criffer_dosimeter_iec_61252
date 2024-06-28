@@ -55,8 +55,17 @@ namespace dosimetro_iec_61252
             }
 
             ExcelWorksheet worksheet = _package.Workbook.Worksheets[sheet_name];
-            worksheet.Cells[row, column].Value = value;
 
+            // Tenta converter o valor para double
+            double doubleValue;
+            if (double.TryParse(value, out doubleValue))
+            {
+                worksheet.Cells[row, column].Value = doubleValue;
+            }
+            else
+            {
+                worksheet.Cells[row, column].Value = value;
+            }
 
             if (save)
             {
@@ -67,7 +76,6 @@ namespace dosimetro_iec_61252
                 }
                 catch (InvalidOperationException)
                 {
-
                     if (cont == 0)
                     {
                         MessageBox.Show("Feche o arquivo Excel antes de salvá-lo.", "Erro ao salvar", MessageBoxButtons.OK, MessageBoxIcon.Error);
